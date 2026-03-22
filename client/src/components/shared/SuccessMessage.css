@@ -1,0 +1,47 @@
+.success-container {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.success-box {
+  padding: 40px;
+  border: 2px solid #ffb000;
+  background: rgba(255, 176, 0, 0.05);
+  box-shadow: 0 0 20px rgba(255, 176, 0, 0.2);
+}
+
+.success-icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+  color: #ffb000;
+  text-shadow: 0 0 10px #ffb000;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: #ffb000;
+  text-shadow: 0 0 5px #ffb000;
+  letter-spacing: 1px;
+}
+
+.success-message {
+  font-size: 14px;
+  color: #ffb000;
+  margin-bottom: 20px;
+  opacity: 0.8;
+}
+
+.success-intent-id {
+  font-size: 12px;
+  color: #ffb000;
+  margin-bottom: 25px;
+  opacity: 0.6;
+  font-family: 'Courier New', monospace;
+}
+
+.success-back-button {
+  width: auto;
+  padding: 10px 30px;
+}

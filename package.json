@@ -1,0 +1,11 @@
+{
+  "name": "stripe-payments-demo",
+  "version": "1.0.0",
+  "description": "Stripe payments demo",
+  "scripts": {
+    "sync-snippets": "node scripts/sync-snippets.js",
+    "client": "node scripts/sync-snippets.js && cd client && npm start",
+    "server": "cd server && node index.js",
+    "snippet-servers": "node scripts/start-snippet-servers.js"
+  }
+}

@@ -1,0 +1,15 @@
+/* ============================================================
+   APOCALYPSE THEME — component overrides
+   ============================================================ */
+
+body {
+  font-family: 'Courier New', monospace;
+  background: #0a0a0a;
+}
+
+.theme-apocalypse .device-screen {
+  box-shadow:
+    0 0 30px rgba(var(--t-primary-rgb), 0.3),
+    inset 0 0 100px rgba(var(--t-primary-rgb), 0.05),
+    inset 0 0 20px rgba(0, 0, 0, 0.8);
+}

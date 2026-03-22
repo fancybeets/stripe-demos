@@ -1,0 +1,318 @@
+.terminal-demo {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.terminal-demo-main {
+  display: flex;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.terminal-steps {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+}
+
+@media (max-width: 799px) {
+  .terminal-demo-main {
+    gap: 10px;
+  }
+
+  .terminal-steps {
+    flex: 1;
+  }
+
+  .terminal-btn {
+    font-size: 10px;
+    padding: 7px 6px;
+    letter-spacing: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .terminal-step-actions {
+    flex-direction: column;
+  }
+
+  .terminal-step-actions .terminal-btn {
+    padding: 5px 6px;
+    flex: none;
+  }
+
+  .terminal-step-label {
+    font-size: 11px;
+  }
+}
+
+.terminal-step {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.terminal-step-reset {
+  margin-top: 6px;
+  border-top: 1px solid #222;
+  padding-top: 10px;
+}
+
+.terminal-step-label {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #cc8800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.terminal-help-link {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  flex-shrink: 0;
+  text-decoration: none;
+  line-height: 1;
+}
+
+.terminal-help-link:hover {
+  border-color: #ffb000;
+  color: #ffb000;
+}
+
+.terminal-step-num {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid #444;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  flex-shrink: 0;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.terminal-step-num.done {
+  border-color: #ffb000;
+  color: #ffb000;
+  text-shadow: 0 0 4px rgba(255, 176, 0, 0.5);
+}
+
+.terminal-step-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-btn {
+  background: #1a1a1a;
+  color: #ffb000;
+  border: 1px solid #ffb000;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  padding: 8px 10px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: background 0.15s, box-shadow 0.15s;
+  white-space: nowrap;
+  flex: 1;
+}
+
+.terminal-btn:hover:not(:disabled) {
+  background: #2a2a2a;
+  box-shadow: 0 0 8px rgba(255, 176, 0, 0.3);
+}
+
+.terminal-btn:active:not(:disabled) {
+  border-color: #442200 #ffb000 #ffb000 #442200;
+}
+
+.terminal-btn:disabled {
+  background: #0a0a0a;
+  color: #333;
+  border-color: #222;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.terminal-btn-primary {
+  flex: 2;
+}
+
+.terminal-btn-danger {
+  color: #cc4444;
+  border-color: #cc4444;
+  flex: 1;
+}
+
+.terminal-btn-danger:hover:not(:disabled) {
+  background: #1a0a0a;
+  box-shadow: 0 0 8px rgba(204, 68, 68, 0.3);
+}
+
+.terminal-btn-capture {
+  color: #00cc66;
+  border-color: #00cc66;
+}
+
+.terminal-btn-capture:hover:not(:disabled) {
+  background: #0a1a0e;
+  box-shadow: 0 0 8px rgba(0, 204, 102, 0.3);
+}
+
+.terminal-btn-reset {
+  color: #cc3333;
+  border-color: #cc3333;
+  background: #111;
+}
+
+.terminal-btn-reset:hover:not(:disabled) {
+  background: #1a0808;
+  color: #ee4444;
+  border-color: #ee4444;
+  box-shadow: 0 0 8px rgba(204, 51, 51, 0.3);
+}
+
+.terminal-reader-id-label {
+  flex: 2;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ffb000;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid #333;
+  background: #0a0a0a;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.terminal-btn-forget {
+  flex: 1;
+}
+
+.terminal-waiting-label {
+  flex: 2;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ffb000;
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid #333;
+  background: #0a0a0a;
+  letter-spacing: 0.5px;
+}
+
+.terminal-code-input {
+  flex: 1;
+  background: #0a0a0a;
+  border: 1px solid #ffb000;
+  color: #ffb000;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  padding: 8px 10px;
+  outline: none;
+  min-width: 0;
+}
+
+.terminal-code-input::placeholder {
+  color: rgba(255, 176, 0, 0.6);
+}
+
+.terminal-code-input:disabled {
+  border-color: #222;
+  color: #333;
+}
+
+.terminal-error {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #ff4444;
+  background: #1a0808;
+  border: 1px solid #cc2222;
+  padding: 8px 10px;
+}
+
+.terminal-error-label {
+  font-weight: bold;
+  margin-right: 6px;
+  text-shadow: 0 0 4px rgba(255, 68, 68, 0.5);
+}
+
+.terminal-log {
+  border: 1px solid #1a1a1a;
+  background: #080808;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.terminal-log-entry {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+}
+
+.terminal-log-step {
+  color: #555;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.terminal-log-msg {
+  color: #ffb000;
+  word-break: break-all;
+}
+
+.terminal-log-ok .terminal-log-step {
+  color: #448844;
+}
+
+.terminal-log-ok .terminal-log-msg {
+  color: #44aa44;
+}
+
+.terminal-log-error .terminal-log-step {
+  color: #884444;
+}
+
+.terminal-log-error .terminal-log-msg {
+  color: #cc4444;
+}
+
+.terminal-reader-status {
+  font-family: 'Courier New', monospace;
+  font-size: 10px;
+  letter-spacing: 0.5px;
+  padding: 2px 6px;
+  border: 1px solid currentColor;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.terminal-reader-status-online  { color: #44aa44; }
+.terminal-reader-status-offline { color: #cc4444; }
+.terminal-reader-status-waiting { color: #888; }

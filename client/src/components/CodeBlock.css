@@ -1,0 +1,49 @@
+.code-block-container {
+  margin-top: 16px;
+  background: rgba(255, 176, 0, 0.03);
+  border: 1px solid rgba(255, 176, 0, 0.15);
+  padding: 12px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.code-block-header {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.code-block-title {
+  font-weight: bold;
+  color: #ffcc33;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 5px #ffcc33;
+  text-align: left;
+}
+
+.code-block-copy-button {
+  background: #1a1a1a;
+  color: #ffb000;
+  border: 1px solid #ffb000;
+  padding: 4px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: 0 0 3px #ffb000;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.code-block-copy-button:hover {
+  background: #2a2a2a;
+  box-shadow: 0 0 5px rgba(255, 176, 0, 0.3);
+}
+
+.code-block-copy-button:active {
+  border-color: #442200 #ffb000 #ffb000 #442200;
+}

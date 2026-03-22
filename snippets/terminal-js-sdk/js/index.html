@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Terminal Payment Demo (JS SDK)</title>
+    <style>
+      button { margin: 4px; padding: 8px 16px; cursor: pointer; }
+      button:disabled { opacity: 0.4; cursor: not-allowed; }
+      #log { margin-top: 16px; background: #f5f5f5; padding: 12px; font-family: monospace; font-size: 13px; white-space: pre; }
+    </style>
+  </head>
+  <body>
+    <h2>Stripe Terminal (JavaScript SDK)</h2>
+
+    <div>
+      <button id="btn-connect">Connect to Simulated Reader</button>
+    </div>
+    <div>
+      <button id="btn-create-pi" disabled>Create Payment Intent ($42.42)</button>
+    </div>
+    <div>
+      <button id="btn-collect" disabled>Collect Payment Method</button>
+      <button id="btn-cancel-collect" disabled>Cancel</button>
+    </div>
+    <div>
+      <button id="btn-process" disabled>Process Payment</button>
+    </div>
+    <div>
+      <button id="btn-capture" disabled>Capture Payment</button>
+    </div>
+    <div>
+      <button id="btn-reset" disabled>Reset</button>
+    </div>
+
+    <div id="log"></div>
+
+    <script type="module" src="terminal.js"></script>
+  </body>
+</html>

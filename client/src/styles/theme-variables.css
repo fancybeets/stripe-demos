@@ -1,0 +1,140 @@
+/* ============================================================
+   THEME CSS CUSTOM PROPERTY BLOCKS
+   All --t-* variable definitions for each theme
+   ============================================================ */
+
+.App.theme-apocalypse {
+  --t-primary:          #ffb000;
+  --t-primary-hover:    #ffc933;
+  --t-primary-rgb:      255, 176, 0;
+  --t-bg-app:           #0a0a0a;
+  --t-bg-surface:       #111111;
+  --t-bg-raised:        #1a1a1a;
+  --t-text-body:        #e0e0e0;
+  --t-text-secondary:   #aaaaaa;
+  --t-text-muted:       #666666;
+  --t-border-subtle:    #333333;
+  --t-text-shadow:      0 0 15px #ffb000;
+  --t-scanline-display: block;
+  --t-glow-shadow:      0 0 20px rgba(255,176,0,0.3);
+  --t-glow-low:         rgba(255,176,0,0.4);
+  --t-glow-high:        rgba(255,176,0,0.8);
+  --t-error-bg:         rgba(220,53,69,0.15);
+  --t-error-text:       #ff6b6b;
+  --t-success-bg:       rgba(56,161,105,0.1);
+  --t-success-text:     #68d391;
+  --t-text-on-primary:  #000000;
+  --t-error-border:     #cc2222;
+  --t-success-border:   #336622;
+  --t-font-family: 'Courier New', monospace;
+  --t-letter-spacing: 0.08em;
+  --t-border-radius: 0px;
+  --t-bg-input: #0a0a0a;
+  --t-bg-sidebar: #1a1a1a;
+  --t-sidebar-hover-bg: rgba(255,176,0,0.08);
+  --t-primary-alpha-low: rgba(255,176,0,0.08);
+  --t-primary-alpha-mid: rgba(255,176,0,0.2);
+  --t-code-bg: #0a0a0a;
+  --t-code-border: #333333;
+  --t-card-bg: #111111;
+  --t-pending-overlay-bg: rgba(0,0,0,0.7);
+  background: #0a0a0a;
+}
+
+/* ============================================================
+   SIMPLE THEME
+   ============================================================ */
+
+.App.theme-simple {
+  --t-primary:          #635BFF;
+  --t-primary-hover:    #4f47ff;
+  --t-primary-active:   #4338ca;
+  --t-primary-rgb:      99, 91, 255;
+  --t-secondary:        #9333ea;
+  --t-secondary-hover:  #7c3aed;
+  --t-bg-app:           #f0f0f8;
+  --t-bg-surface:       #ffffff;
+  --t-bg-raised:        #f8f8fd;
+  --t-bg-sunken:        #f0f0f8;
+  --t-bg-well:          #fafafa;
+  --t-bg-overlay:       rgba(255,255,255,0.7);
+  --t-bg-header:        linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  --t-text-body:        #1a1a1a;
+  --t-text-secondary:   #555555;
+  --t-text-muted:       #aaaaaa;
+  --t-border-subtle:    #e0e0f0;
+  --t-border-faint:     rgba(99,91,255,0.15);
+  --t-text-shadow:      none;
+  --t-scanline-display: none;
+  --t-glow-shadow:      none;
+  --t-card-shadow:      0 2px 12px rgba(0,0,0,0.15);
+  --t-glow-low:         rgba(99,91,255,0.4);
+  --t-glow-high:        rgba(124,58,237,0.8);
+  --t-error-bg:         #fff5f5;
+  --t-error-text:       #e53e3e;
+  --t-success-bg:       #f0fff4;
+  --t-success-text:     #276749;
+  --t-text-on-primary:  #ffffff;
+  --t-error-border:     #e53e3e;
+  --t-success-border:   #38a169;
+  --t-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --t-letter-spacing: normal;
+  --t-border-radius: 4px;
+  --t-bg-input: #ffffff;
+  --t-bg-sidebar: #f8f8fd;
+  --t-sidebar-hover-bg: rgba(99,91,255,0.08);
+  --t-primary-alpha-low: rgba(99,91,255,0.08);
+  --t-primary-alpha-mid: rgba(99,91,255,0.12);
+  --t-code-bg: #f8f8fd;
+  --t-code-border: rgba(99,91,255,0.25);
+  --t-card-bg: #ffffff;
+  --t-pending-overlay-bg: rgba(255,255,255,0.7);
+  background: #f0f0f8;
+}
+
+/* ============================================================
+   DARK THEME (modern dark mode, alternative to simple)
+   ============================================================ */
+
+.App.theme-dark {
+  --t-primary:          #a78bfa;
+  --t-primary-hover:    #c4b5fd;
+  --t-primary-rgb:      167, 139, 250;
+  --t-bg-app:           #0f0f14;
+  --t-bg-surface:       #16161f;
+  --t-bg-raised:        #1e1e2e;
+  --t-bg-sunken:        #12121a;
+  --t-bg-well:          #1a1a28;
+  --t-bg-overlay:       rgba(22,22,31,0.7);
+  --t-bg-header:        linear-gradient(135deg, #4c1d95 0%, #a78bfa 50%, #6366f1 100%);
+  --t-text-body:        #c0beff;
+  --t-text-secondary:   #9090a8;
+  --t-text-muted:       #555566;
+  --t-border-subtle:    #2d2d3d;
+  --t-border-faint:     rgba(167,139,250,0.15);
+  --t-text-shadow:      none;
+  --t-scanline-display: none;
+  --t-glow-shadow:      none;
+  --t-glow-low:         rgba(167,139,250,0.4);
+  --t-glow-high:        rgba(196,181,253,0.8);
+  --t-error-bg:         rgba(248,113,113,0.08);
+  --t-error-text:       #f87171;
+  --t-success-bg:       rgba(74,222,128,0.06);
+  --t-success-text:     #4ade80;
+  --t-text-on-primary:  #ffffff;
+  --t-error-border:     #f87171;
+  --t-success-border:   #4ade80;
+  --t-font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --t-letter-spacing: normal;
+  --t-border-radius: 4px;
+  --t-bg-input: #1e1e2e;
+  --t-bg-sidebar: #1a1a28;
+  --t-sidebar-hover-bg: rgba(167,139,250,0.15);
+  --t-primary-alpha-low: rgba(167,139,250,0.15);
+  --t-primary-alpha-mid: rgba(167,139,250,0.25);
+  --t-code-bg: #12121a;
+  --t-code-border: rgba(167,139,250,0.2);
+  --t-card-bg: #1e1e2e;
+  --t-pending-overlay-bg: rgba(22,22,31,0.7);
+  background: #0f0f14;
+}

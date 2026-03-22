@@ -1,0 +1,125 @@
+.settings-container {
+  padding: 40px 30px 60px 30px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.settings-section {
+  margin-bottom: 50px;
+}
+
+.settings-section:last-child {
+  margin-bottom: 0;
+}
+
+.settings-title {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffb000;
+  text-shadow: 0 0 5px #ffb000;
+  letter-spacing: 1px;
+  margin-bottom: 25px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid rgba(255, 176, 0, 0.3);
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 0;
+}
+
+.settings-label {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #ffb000;
+  opacity: 0.7;
+  letter-spacing: 1px;
+  width: 80px;
+  flex-shrink: 0;
+}
+
+.settings-select {
+  background: #1a1a1a;
+  border: 2px solid #ffb000;
+  color: #ffb000;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  letter-spacing: 1px;
+  padding: 6px 10px;
+  cursor: pointer;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 28px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23ffb000'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+}
+
+.settings-select:hover {
+  box-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+}
+
+.settings-select option {
+  background: #1a1a1a;
+  color: #ffb000;
+}
+
+.settings-checkbox {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ffb000;
+  background: #1a1a1a;
+  cursor: pointer;
+  outline: none;
+  flex-shrink: 0;
+}
+
+.settings-checkbox:checked {
+  background: #ffb000;
+}
+
+.settings-checkbox:hover {
+  box-shadow: 0 0 8px rgba(255, 176, 0, 0.4);
+}
+
+.settings-body {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.settings-note {
+  font-family: 'Courier New', monospace;
+  font-size: 11px;
+  color: #ffb000;
+  opacity: 0.45;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  padding-top: 4px;
+}
+
+.settings-note ul {
+  margin: 6px 0 0 0;
+  padding-left: 16px;
+}
+
+.settings-note li {
+  margin-bottom: 2px;
+}
+
+.settings-note code {
+  opacity: 0.8;
+}
+
+@media (max-width: 799px) {
+  .settings-maximize-row,
+  .settings-note {
+    display: none;
+  }
+}

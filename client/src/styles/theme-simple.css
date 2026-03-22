@@ -1,0 +1,738 @@
+/* ============================================================
+   SIMPLE THEME — component overrides
+   ============================================================ */
+
+/* Screen */
+.theme-simple .device-screen {
+  background: #ffffff;
+  border-color: var(--t-primary);
+}
+
+/* Header */
+.theme-simple .device-header {
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  border-bottom: none;
+}
+
+/* Back / maximize / settings buttons */
+.theme-simple .device-back-button,
+.theme-simple .device-maximize-button,
+.theme-simple .device-settings-button {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.theme-simple .device-back-button:hover,
+.theme-simple .device-maximize-button:hover,
+.theme-simple .device-settings-button:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.theme-simple .device-settings-button.active {
+  background: #ffffff;
+  color: var(--t-primary);
+  border-color: #ffffff;
+}
+
+/* Tabs */
+.theme-simple .device-tab {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  letter-spacing: normal;
+}
+
+.theme-simple .device-tab:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.theme-simple .device-tab.active {
+  background: #ffffff;
+  color: var(--t-primary);
+  border-color: #ffffff;
+}
+
+.theme-simple .device-tab-all-dropdown {
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  border-color: rgba(255, 255, 255, 0.4);
+  border-top: none;
+}
+
+.theme-simple .device-tab-all-item {
+  color: #ffffff;
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  border-top-color: rgba(255, 255, 255, 0.2);
+}
+
+.theme-simple .device-tab-all-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.theme-simple .device-tab-all-item.active {
+  background: #ffffff;
+  color: var(--t-primary);
+}
+
+/* Sidebar */
+.theme-simple .device-sidebar {
+  background: #f8f8fd;
+  border-right-color: var(--t-primary);
+}
+
+.theme-simple .device-sidebar-title,
+.theme-simple .device-sidebar-title-fixed {
+  color: var(--t-text-body);
+  border-bottom-color: var(--t-primary);
+  letter-spacing: normal;
+}
+
+.theme-simple .device-sidebar-item.selected {
+  background: #635BFF;
+  color: #ffffff;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+/* Inputs, selects, buttons */
+.theme-simple .device-select,
+.theme-simple .device-input,
+.theme-simple .device-button {
+  color: var(--t-text-body);
+  background: #ffffff;
+  border-color: var(--t-primary);
+  letter-spacing: normal;
+}
+
+.theme-simple .device-select:hover,
+.theme-simple .device-input:hover,
+.theme-simple .device-button:hover {
+  background: rgba(99, 91, 255, 0.08);
+}
+
+/* Payment methods list */
+.theme-simple .device-payment-method.selected {
+  background: rgba(99, 91, 255, 0.12);
+  border-color: var(--t-primary);
+}
+
+/* Pending message */
+.theme-simple .device-pending-message {
+  color: var(--t-text-body);
+  border-color: var(--t-primary);
+  background: rgba(248, 248, 253, 0.95);
+  box-shadow: 0 2px 12px rgba(99, 91, 255, 0.2);
+  animation: none;
+  letter-spacing: normal;
+}
+
+/* Footer indicator labels */
+.theme-simple .device-view-indicator.active .indicator-label {
+  color: var(--t-text-body);
+}
+
+/* ---- Integration content area ---- */
+
+.theme-simple .view-title {
+  background: #ffffff;
+}
+
+.theme-simple .view-nav-button {
+  background: #ffffff;
+  border-color: #635BFF;
+}
+
+.theme-simple .view-nav-button:hover {
+  background: #ebebff;
+  box-shadow: none;
+}
+
+.theme-simple .about-content a {
+  color: #635BFF;
+  text-shadow: none;
+}
+
+.theme-simple .about-content a:hover {
+  color: #4f47ff;
+  text-shadow: none;
+}
+
+.theme-simple .pay-button {
+  background: #635BFF;
+  color: #ffffff;
+  border-color: #635BFF;
+}
+
+.theme-simple .pay-button:hover:not(:disabled) {
+  background: #4f47ff;
+}
+
+.theme-simple .pay-button:disabled {
+  background: #e8e8f4;
+  color: #aaaaaa;
+  border-color: #ccccee;
+}
+
+.theme-simple .success-box {
+  border-color: rgba(99, 91, 255, 0.3);
+  background: rgba(99, 91, 255, 0.04);
+  box-shadow: 0 4px 20px rgba(99, 91, 255, 0.1);
+}
+
+.theme-simple .success-icon {
+  color: #635BFF;
+}
+
+.theme-simple .success-message {
+  color: #444444;
+}
+
+.theme-simple .success-intent-id {
+  color: #6b7280;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .mode-selector label {
+  background: #ffffff;
+  border-color: #635BFF;
+  color: var(--t-text-body);
+  text-shadow: none;
+  letter-spacing: normal;
+}
+
+.theme-simple .mode-selector label:hover {
+  background: #ebebff;
+}
+
+.theme-simple .stripe-element-container {
+  background: #ffffff;
+}
+
+.theme-simple .email-input {
+  background: #ffffff;
+  color: var(--t-text-body);
+  border: 1px solid #635BFF;
+  box-shadow: none;
+}
+
+.theme-simple .email-input::placeholder {
+  color: var(--t-text-muted);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .email-input:focus {
+  border-color: var(--t-primary-hover);
+  box-shadow: none;
+}
+
+.theme-simple .error-container {
+  background: var(--t-error-bg);
+  border-color: var(--t-error-border);
+  box-shadow: none;
+}
+
+.theme-simple .error-title {
+  color: var(--t-error-text);
+  border-bottom-color: var(--t-error-border);
+}
+
+.theme-simple .error-message {
+  color: var(--t-error-text);
+}
+
+/* ---- Setup section (connect-embedded Code view) ---- */
+
+.theme-simple .setup-section {
+  background: #f8f8fd;
+  border-color: rgba(99, 91, 255, 0.25);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--t-text-body);
+}
+
+.theme-simple .setup-header {
+  border-bottom-color: rgba(99, 91, 255, 0.2);
+}
+
+.theme-simple .setup-title {
+  color: var(--t-primary);
+  text-shadow: none;
+}
+
+.theme-simple .download-button {
+  background: #ffffff;
+  color: var(--t-primary);
+  border-color: var(--t-primary);
+  text-shadow: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .download-button:hover {
+  background: #ebebff;
+  box-shadow: none;
+}
+
+.theme-simple .setup-steps {
+  color: var(--t-text-body);
+}
+
+.theme-simple .setup-steps code {
+  background: rgba(99, 91, 255, 0.06);
+  border-color: rgba(99, 91, 255, 0.2);
+  color: var(--t-primary);
+}
+
+.theme-simple .setup-link {
+  color: var(--t-primary);
+}
+
+.theme-simple .setup-link:hover {
+  text-shadow: none;
+  color: var(--t-primary-hover);
+}
+
+/* ---- Code block ---- */
+
+.theme-simple .code-block-container {
+  background: #f8f8fd;
+  border-color: rgba(99, 91, 255, 0.25);
+}
+
+.theme-simple .code-block-title {
+  color: var(--t-primary);
+}
+
+.theme-simple .code-block-copy-button {
+  background: #ffffff;
+}
+
+.theme-simple .code-block-copy-button:hover {
+  background: #ebebff;
+}
+
+/* ---- About & Settings pages ---- */
+
+.theme-simple .about-title,
+.theme-simple .settings-title {
+  border-bottom: 2px solid #635BFF;
+}
+
+.theme-simple .author-photo-wrapper {
+  border-color: rgba(99, 91, 255, 0.3);
+  box-shadow: 0 2px 12px rgba(99, 91, 255, 0.1);
+}
+
+.theme-simple .settings-select {
+  background: #ffffff;
+  border-color: var(--t-primary);
+  color: var(--t-text-body);
+}
+
+.theme-simple .settings-select:hover {
+  box-shadow: 0 0 8px rgba(99, 91, 255, 0.25);
+}
+
+.theme-simple .settings-select option {
+  background: #ffffff;
+  color: var(--t-text-body);
+}
+
+.theme-simple .settings-checkbox {
+  background: #ffffff;
+}
+
+.theme-simple .settings-checkbox:hover {
+  box-shadow: 0 0 8px rgba(99, 91, 255, 0.25);
+}
+
+/* ---- Landing page ---- */
+
+.theme-simple .landing-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-simple .landing-link {
+  color: var(--t-primary);
+}
+
+.theme-simple .landing-link:hover {
+  color: var(--t-primary-hover);
+}
+
+.theme-simple .element-card {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-simple .element-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.24);
+}
+
+/* ---- Network Tools page ---- */
+
+.theme-simple .network-tools-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-simple .tool-card {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-simple .tool-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.24);
+}
+
+.theme-simple .tool-card:hover .tool-card-button {
+  background: var(--t-primary-hover);
+  border-color: var(--t-primary-hover);
+}
+
+/* ---- Stripe Reachability page ---- */
+
+.theme-simple .stripe-reachability-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-simple .run-test-button:hover:not(:disabled) {
+  background: rgba(99, 91, 255, 0.85);
+  border: none;
+}
+
+.theme-simple .run-test-button:disabled {
+  background: #e8e8f4;
+  color: var(--t-text-muted);
+}
+
+.theme-simple .countdown-circle-bg {
+  stroke: rgba(99, 91, 255, 0.2);
+}
+
+.theme-simple .countdown-circle-progress {
+  stroke: var(--t-primary);
+  filter: drop-shadow(0 0 4px rgba(99, 91, 255, 0.3));
+}
+
+.theme-simple .results-table {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-simple .results-table thead {
+  background: #f8f8fd;
+  border-bottom: 1px solid #e5e5f0;
+}
+
+.theme-simple .results-table th {
+  border-right: 1px solid #e5e5f0;
+}
+
+.theme-simple .results-table td {
+  border-right: 1px solid #f0f0f8;
+}
+
+.theme-simple .results-table tbody tr {
+  border-bottom: 1px solid #f0f0f8;
+}
+
+.theme-simple .results-table tbody tr:hover {
+  background: rgba(99, 91, 255, 0.04);
+}
+
+.theme-simple .test-summary {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-simple .summary-stat {
+  border: 1px solid #e5e5f0;
+  background: #f8f8fd;
+}
+
+.theme-simple .test-instructions {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ---- Logs drawer ---- */
+
+.theme-simple .api-logger-drawer {
+  background: #ffffff;
+  border-left: 2px solid #635BFF;
+  box-shadow: -4px 0 20px rgba(99, 91, 255, 0.1);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .api-logger-toggle {
+  box-shadow: -2px 0 8px rgba(99, 91, 255, 0.3);
+}
+
+.theme-simple .api-logger-header {
+  background: #f8f8fd;
+  border-bottom: 1px solid rgba(99, 91, 255, 0.2);
+  box-shadow: none;
+}
+
+.theme-simple .api-logger-clear-btn {
+  background: #ffffff;
+  color: var(--t-text-body);
+  border: 1px solid #635BFF;
+  text-shadow: none;
+  letter-spacing: normal;
+  box-shadow: none;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .api-logger-clear-btn:hover {
+  background: #ebebff;
+}
+
+.theme-simple .api-logger-item {
+  background: #fafafa;
+  border: 1px solid rgba(99, 91, 255, 0.15);
+}
+
+.theme-simple .api-logger-summary:hover {
+  background: #f4f4fd;
+}
+
+.theme-simple .api-logger-summary.non-expandable:hover {
+  background: #fafafa;
+}
+
+.theme-simple .api-logger-method {
+  border-color: rgba(99, 91, 255, 0.2);
+  background: rgba(99, 91, 255, 0.06);
+}
+
+.theme-simple .api-logger-stripe-id {
+  color: var(--t-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .api-logger-status {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.theme-simple .api-logger-details {
+  background: #f8f8fd;
+  border-top-color: rgba(99, 91, 255, 0.15);
+}
+
+.theme-simple .api-logger-code {
+  background: #f0f0f8;
+  border-color: rgba(99, 91, 255, 0.15);
+}
+
+/* ---- Hide device chrome outside the screen ---- */
+
+.theme-simple .device-container {
+  background: #f0f0f8;
+  padding-bottom: 0;
+}
+
+.theme-simple .device-screen-container {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ---- Scrollbars ---- */
+
+.theme-simple * {
+  scrollbar-color: #635BFF #f0f0f8;
+}
+
+.theme-simple *::-webkit-scrollbar-track {
+  background: #f0f0f8;
+  border: 1px solid rgba(99, 91, 255, 0.2);
+}
+
+.theme-simple *::-webkit-scrollbar-thumb {
+  background: #635BFF;
+  box-shadow: none;
+}
+
+.theme-simple *::-webkit-scrollbar-thumb:hover {
+  background: #4f47ff;
+  box-shadow: none;
+}
+
+.theme-simple *::-webkit-scrollbar-corner {
+  background: #f0f0f8;
+}
+
+/* ---- Terminal ---- */
+
+.theme-simple .terminal-step-num {
+  border-color: #ccccee;
+  color: var(--t-text-muted);
+}
+
+.theme-simple .terminal-help-link {
+  border-color: #ccccee;
+  color: var(--t-text-muted);
+}
+
+.theme-simple .terminal-step-reset {
+  border-top-color: #e5e5f0;
+}
+
+.theme-simple .terminal-btn {
+  background: #ffffff;
+}
+
+.theme-simple .terminal-btn:hover:not(:disabled) {
+  background: #ebebff;
+  box-shadow: none;
+}
+
+.theme-simple .terminal-btn:active:not(:disabled) {
+  border-color: #4f47ff;
+}
+
+.theme-simple .terminal-btn:disabled {
+  background: #f5f5ff;
+  color: var(--t-text-muted);
+  border-color: #ccccee;
+}
+
+.theme-simple .terminal-btn-danger:hover:not(:disabled) {
+  background: var(--t-error-bg);
+  box-shadow: none;
+}
+
+.theme-simple .terminal-btn-capture {
+  color: #1a8a4a;
+  border-color: #1a8a4a;
+}
+
+.theme-simple .terminal-btn-capture:hover:not(:disabled) {
+  background: #f0fff5;
+  box-shadow: none;
+}
+
+.theme-simple .terminal-btn-reset {
+  background: var(--t-error-bg);
+  color: #cc2222;
+  border-color: #cc2222;
+}
+
+.theme-simple .terminal-btn-reset:hover:not(:disabled) {
+  background: #ffe8e8;
+  color: #aa1111;
+  border-color: #aa1111;
+  box-shadow: none;
+}
+
+.theme-simple .terminal-reader-id-label {
+  border-color: #ccccee;
+  background: #f8f8ff;
+  color: var(--t-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .terminal-waiting-label {
+  border-color: #ccccee;
+  background: #f8f8ff;
+  color: var(--t-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .terminal-code-input {
+  background: #ffffff;
+  border-color: var(--t-primary);
+  color: var(--t-text-body);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .terminal-code-input::placeholder { color: var(--t-text-muted); }
+.theme-simple .terminal-code-input:disabled { border-color: #ccccee; color: var(--t-text-muted); }
+
+.theme-simple .terminal-error {
+  background: var(--t-error-bg);
+  border-color: var(--t-error-border);
+  color: var(--t-error-text);
+}
+
+.theme-simple .terminal-log {
+  background: #f8f8fd;
+  border-color: #e5e5f0;
+}
+
+.theme-simple .terminal-log-step {
+  color: #999999;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.theme-simple .terminal-log-ok .terminal-log-step { color: #2a8a4a; }
+.theme-simple .terminal-log-ok .terminal-log-msg  { color: #1a6a3a; }
+.theme-simple .terminal-log-error .terminal-log-step { color: #cc3333; }
+.theme-simple .terminal-log-error .terminal-log-msg  { color: var(--t-error-text); }
+
+/* ---- Fake Reader ---- */
+
+.theme-simple .fake-reader {
+  background: #e8e8f4;
+  border-color: #c0c0d8;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+.theme-simple .fake-reader-active {
+  border-color: #635BFF;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 12px rgba(99, 91, 255, 0.25);
+}
+.theme-simple .fake-reader-approved {
+  border-color: #22c55e;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 12px rgba(34, 197, 94, 0.25);
+}
+.theme-simple .fake-reader-authorized {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12), 0 0 12px rgba(59, 130, 246, 0.25);
+}
+.theme-simple .fake-reader-brand { color: #9090aa; }
+.theme-simple .fake-reader-pulse { background: #635BFF; }
+.theme-simple .fake-reader-screen {
+  background: #ffffff;
+  border-color: #d0d0e4;
+}
+.theme-simple .fake-reader-active .fake-reader-screen  { background: #ffffff; border-color: #c0b0f0; }
+.theme-simple .fake-reader-approved .fake-reader-screen { background: #f0fff5; border-color: #a0ddb8; }
+.theme-simple .fake-reader-authorized .fake-reader-screen { background: #f0f4ff; border-color: #a0b4ee; }
+.theme-simple .fake-reader-merchant { color: var(--t-text-secondary); }
+.theme-simple .fake-reader-divider { background: #d0d0e4; }
+.theme-simple .fake-reader-status-line1 { color: var(--t-text-body); text-shadow: none; }
+.theme-simple .fake-reader-status-line2 { color: #444444; }
+.theme-simple .fake-reader-amount { color: var(--t-text-body); text-shadow: none; }
+.theme-simple .fake-reader-checkmark { color: #16a34a; text-shadow: none; }
+.theme-simple .fake-reader-active .fake-reader-pulse { background: #635BFF; }
+.theme-simple .fake-reader-active .fake-reader-status-line1 { color: var(--t-primary); text-shadow: none; }
+.theme-simple .fake-reader-active .fake-reader-status-line2 { color: #7c6fcc; }
+.theme-simple .fake-reader-active .fake-reader-amount { color: var(--t-primary); text-shadow: none; }
+.theme-simple .fake-reader-approved .fake-reader-status-line1 { color: #16a34a; text-shadow: none; }
+.theme-simple .fake-reader-approved .fake-reader-status-line2 { color: #166534; }
+.theme-simple .fake-reader-approved .fake-reader-amount { color: #16a34a; text-shadow: none; }
+.theme-simple .fake-reader-authorized .fake-reader-status-line1 { color: #2563eb; text-shadow: none; }
+.theme-simple .fake-reader-authorized .fake-reader-status-line2 { color: #1d4ed8; }
+.theme-simple .fake-reader-authorized .fake-reader-amount { color: #2563eb; text-shadow: none; }
+.theme-simple .fake-reader-led { background: #d0d0e4; border-color: #b0b0cc; }
+.theme-simple .fake-reader-led-on { background: #22c55e; box-shadow: 0 0 4px rgba(34, 197, 94, 0.8); }
+.theme-simple .fake-reader-id { color: #9090aa; }

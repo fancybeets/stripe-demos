@@ -1,0 +1,24 @@
+@import './styles/theme-variables.css';
+@import './styles/theme-shared-clean.css';
+@import './styles/theme-apocalypse.css';
+@import './styles/theme-simple.css';
+@import './styles/theme-dark.css';
+
+/* === Base Reset === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}

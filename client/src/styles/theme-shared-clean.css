@@ -1,0 +1,859 @@
+/* ============================================================
+   SHARED THEME RULES (simple + dark)
+   Uses var(--t-*) tokens defined in theme-variables.css.
+   These selectors apply to both .theme-simple and .theme-dark.
+   ============================================================ */
+
+/* Font override — all screen content */
+.theme-simple .device-screen,
+.theme-simple .device-screen *,
+.theme-dark .device-screen,
+.theme-dark .device-screen * {
+  font-family: var(--t-font-family);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Scanline overlay off */
+.theme-simple .device-screen::before,
+.theme-dark .device-screen::before {
+  display: none;
+}
+
+/* Sidebar back buttons */
+.theme-simple .device-back-btn,
+.theme-simple .device-sidebar-back-btn,
+.theme-dark .device-back-btn,
+.theme-dark .device-sidebar-back-btn {
+  background: var(--t-bg-input);
+  border-color: var(--t-primary);
+  color: var(--t-text-body);
+}
+
+.theme-simple .device-back-btn:hover,
+.theme-simple .device-sidebar-back-btn:hover,
+.theme-dark .device-back-btn:hover,
+.theme-dark .device-sidebar-back-btn:hover {
+  background: var(--t-sidebar-hover-bg);
+}
+
+/* Main content area color */
+.theme-simple .device-main,
+.theme-dark .device-main {
+  color: var(--t-text-body);
+}
+
+/* Pending overlay */
+.theme-simple .device-pending-overlay,
+.theme-dark .device-pending-overlay {
+  background: var(--t-pending-overlay-bg);
+}
+
+/* Settings checkbox checked state */
+.theme-simple .settings-checkbox:checked,
+.theme-dark .settings-checkbox:checked {
+  background: var(--t-primary);
+}
+
+/* Settings label font */
+.theme-simple .settings-label,
+.theme-dark .settings-label {
+  font-family: var(--t-font-family);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Settings note font */
+.theme-simple .settings-note,
+.theme-dark .settings-note {
+  font-family: var(--t-font-family);
+  color: var(--t-primary);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Device chrome hidden */
+.theme-simple .device-knob,
+.theme-simple .device-corner,
+.theme-simple .device-corner-hole,
+.theme-simple .device-vents,
+.theme-simple .device-label,
+.theme-simple .device-panel-line,
+.theme-simple .device-footer,
+.theme-simple .device-screws,
+.theme-dark .device-knob,
+.theme-dark .device-corner,
+.theme-dark .device-corner-hole,
+.theme-dark .device-vents,
+.theme-dark .device-label,
+.theme-dark .device-panel-line,
+.theme-dark .device-footer,
+.theme-dark .device-screws {
+  display: none;
+}
+
+/* Device screen container shared styles */
+.theme-simple .device-screen-container,
+.theme-dark .device-screen-container {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+.theme-simple .device-screen,
+.theme-dark .device-screen {
+  border: none;
+  border-radius: 0;
+}
+
+/* Sidebar item base */
+.theme-simple .device-sidebar-item,
+.theme-dark .device-sidebar-item {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+.theme-simple .device-sidebar-item:hover,
+.theme-dark .device-sidebar-item:hover {
+  background: var(--t-sidebar-hover-bg);
+  border-color: var(--t-primary);
+}
+
+/* Option labels */
+.theme-simple .device-option-label,
+.theme-dark .device-option-label {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Device checkbox border */
+.theme-simple .device-checkbox,
+.theme-dark .device-checkbox {
+  border-color: var(--t-primary);
+}
+
+/* Indicator labels */
+.theme-simple .indicator-label,
+.theme-dark .indicator-label {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+.theme-simple .device-view-indicator.active .indicator-label,
+.theme-dark .device-view-indicator.active .indicator-label {
+  color: var(--t-text-body);
+}
+
+/* Error container shared */
+.theme-simple .error-container::before,
+.theme-dark .error-container::before {
+  display: none;
+}
+
+/* About content shared */
+.theme-simple .about-content,
+.theme-simple .about-content h3,
+.theme-simple .about-content p,
+.theme-simple .about-content li,
+.theme-dark .about-content,
+.theme-dark .about-content h3,
+.theme-dark .about-content p,
+.theme-dark .about-content li {
+  color: var(--t-text-body);
+  text-shadow: none;
+  opacity: 1;
+  font-family: var(--t-font-family);
+}
+
+/* Loading color */
+.theme-simple .loading,
+.theme-dark .loading {
+  color: var(--t-text-secondary);
+}
+
+/* Mode selector shared */
+.theme-simple .mode-selector label:has(input[type="radio"]:checked),
+.theme-dark .mode-selector label:has(input[type="radio"]:checked) {
+  background: var(--t-primary);
+  color: #ffffff;
+  text-shadow: none;
+  border-color: var(--t-primary);
+}
+
+.theme-simple .mode-selector-title,
+.theme-dark .mode-selector-title {
+  color: var(--t-text-secondary);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Input placeholder shared */
+.theme-simple .device-input::placeholder,
+.theme-dark .device-input::placeholder {
+  color: var(--t-text-muted);
+  opacity: 1;
+}
+
+/* Device select focus shared */
+.theme-simple .device-select:focus,
+.theme-simple .device-input:focus,
+.theme-dark .device-select:focus,
+.theme-dark .device-input:focus {
+  outline: none;
+  border-color: var(--t-primary-hover);
+}
+
+/* Device select option shared */
+.theme-simple .device-select option,
+.theme-dark .device-select option {
+  background: var(--t-bg-input);
+  color: var(--t-text-body);
+}
+
+/* Payment method shared */
+.theme-simple .device-payment-method,
+.theme-dark .device-payment-method {
+  color: var(--t-text-body);
+}
+
+.theme-simple .device-payment-method:hover,
+.theme-dark .device-payment-method:hover {
+  background: var(--t-primary-alpha-low);
+  border-color: var(--t-primary);
+}
+
+/* Success title shared */
+.theme-simple .success-title,
+.theme-dark .success-title {
+  color: var(--t-text-body);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Success icon shared */
+.theme-simple .success-icon,
+.theme-dark .success-icon {
+  text-shadow: none;
+}
+
+/* Pay button disabled shared */
+.theme-simple .pay-button:disabled,
+.theme-dark .pay-button:disabled {
+  text-shadow: none;
+  cursor: not-allowed;
+}
+
+/* Pay button base shared */
+.theme-simple .pay-button,
+.theme-dark .pay-button {
+  text-shadow: none;
+}
+
+/* View title shared */
+.theme-simple .view-title,
+.theme-dark .view-title {
+  color: var(--t-text-body);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* View nav button shared */
+.theme-simple .view-nav-button,
+.theme-dark .view-nav-button {
+  color: var(--t-text-body);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Error title shared */
+.theme-simple .error-title,
+.theme-dark .error-title {
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+.theme-simple .error-message,
+.theme-dark .error-message {
+  text-shadow: none;
+}
+
+/* Code block title shared */
+.theme-simple .code-block-title,
+.theme-dark .code-block-title {
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+.theme-simple .code-block-copy-button,
+.theme-dark .code-block-copy-button {
+  color: var(--t-text-body);
+  border-color: var(--t-primary);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* About/Settings title shared */
+.theme-simple .about-title,
+.theme-simple .settings-title,
+.theme-dark .about-title,
+.theme-dark .settings-title {
+  color: var(--t-text-body);
+  text-shadow: none;
+  font-family: var(--t-font-family);
+  letter-spacing: var(--t-letter-spacing);
+}
+
+/* Author photo filter shared */
+.theme-simple .author-photo,
+.theme-dark .author-photo {
+  filter: none;
+}
+
+.theme-simple .author-photo-wrapper::after,
+.theme-dark .author-photo-wrapper::after {
+  display: none;
+}
+
+/* Settings label color */
+.theme-simple .settings-label,
+.theme-dark .settings-label {
+  color: var(--t-text-secondary);
+}
+
+/* Settings checkbox border */
+.theme-simple .settings-checkbox,
+.theme-dark .settings-checkbox {
+  border-color: var(--t-primary);
+}
+
+/* API logger toggle shared */
+.theme-simple .api-logger-toggle,
+.theme-dark .api-logger-toggle {
+  background: var(--t-primary);
+  border-color: var(--t-primary);
+  color: #ffffff;
+  text-shadow: none;
+  border-radius: 0px;
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .api-logger-toggle:hover,
+.theme-dark .api-logger-toggle:hover {
+  background: var(--t-primary-hover);
+}
+
+/* API logger title shared */
+.theme-simple .api-logger-title,
+.theme-dark .api-logger-title {
+  color: var(--t-text-body);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+}
+
+/* API logger empty shared */
+.theme-simple .api-logger-empty,
+.theme-dark .api-logger-empty {
+  color: var(--t-text-muted);
+  font-family: var(--t-font-family);
+}
+
+/* API logger item box-shadow shared */
+.theme-simple .api-logger-item,
+.theme-dark .api-logger-item {
+  box-shadow: none;
+}
+
+/* API logger summary line shared */
+.theme-simple .api-logger-summary-line,
+.theme-dark .api-logger-summary-line {
+  font-family: var(--t-font-family);
+}
+
+/* API logger method text-shadow shared */
+.theme-simple .api-logger-method,
+.theme-dark .api-logger-method {
+  text-shadow: none;
+  box-shadow: none;
+  color: var(--t-text-secondary);
+}
+
+.theme-simple .api-logger-method.post,
+.theme-simple .api-logger-method.get,
+.theme-simple .api-logger-method.stripe,
+.theme-dark .api-logger-method.post,
+.theme-dark .api-logger-method.get,
+.theme-dark .api-logger-method.stripe {
+  text-shadow: none;
+}
+
+/* API logger time/url/duration shared */
+.theme-simple .api-logger-time,
+.theme-simple .api-logger-url,
+.theme-simple .api-logger-duration,
+.theme-dark .api-logger-time,
+.theme-dark .api-logger-url,
+.theme-dark .api-logger-duration {
+  color: var(--t-text-secondary);
+  text-shadow: none;
+  font-family: var(--t-font-family);
+}
+
+/* API logger status shared */
+.theme-simple .api-logger-status,
+.theme-dark .api-logger-status {
+  box-shadow: none;
+}
+
+.theme-simple .api-logger-status.status-success,
+.theme-simple .api-logger-status.status-error,
+.theme-simple .api-logger-status.status-info,
+.theme-simple .api-logger-status.status-fyi,
+.theme-dark .api-logger-status.status-success,
+.theme-dark .api-logger-status.status-error,
+.theme-dark .api-logger-status.status-info,
+.theme-dark .api-logger-status.status-fyi {
+  text-shadow: none;
+}
+
+/* API logger section title shared */
+.theme-simple .api-logger-section-title,
+.theme-dark .api-logger-section-title {
+  color: var(--t-primary);
+  text-shadow: none;
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+}
+
+/* API logger code shared */
+.theme-simple .api-logger-code,
+.theme-dark .api-logger-code {
+  color: var(--t-text-body);
+  box-shadow: none;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+/* Landing/Network-Tools/Reachability page - container shared */
+.theme-simple .device-content-full .device-main,
+.theme-dark .device-content-full .device-main {
+  padding: 0;
+}
+
+.theme-simple .landing-content,
+.theme-dark .landing-content {
+  padding: 0 0 40px 0;
+}
+
+.theme-simple .landing-header,
+.theme-dark .landing-header {
+  margin-bottom: 0;
+}
+
+.theme-simple .landing-subtitle,
+.theme-dark .landing-subtitle {
+  padding: 10px 30px;
+  text-transform: none;
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+}
+
+.theme-simple .elements-grid,
+.theme-dark .elements-grid {
+  padding-left: 30px;
+  padding-right: 30px;
+  grid-template-columns: repeat(4, 160px);
+  gap: 16px;
+  justify-content: center;
+}
+
+.theme-simple .elements-grid .element-card:last-child,
+.theme-dark .elements-grid .element-card:last-child {
+  grid-column: auto;
+}
+
+.theme-simple .element-card::before,
+.theme-dark .element-card::before {
+  display: none;
+}
+
+.theme-simple .element-card,
+.theme-dark .element-card {
+  border: none;
+  width: 160px;
+  height: 160px;
+}
+
+.theme-simple .element-card:hover,
+.theme-dark .element-card:hover {
+  border: none;
+}
+
+.theme-simple .element-card-title,
+.theme-dark .element-card-title {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  font-size: 15px;
+}
+
+.theme-simple .element-card-description,
+.theme-dark .element-card-description {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+  font-size: 11px;
+}
+
+.theme-simple .element-card-button,
+.theme-dark .element-card-button {
+  background: var(--t-primary);
+  color: #ffffff;
+  border-color: var(--t-primary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .element-card:hover .element-card-button,
+.theme-dark .element-card:hover .element-card-button {
+  background: var(--t-primary-hover);
+  border-color: var(--t-primary-hover);
+}
+
+@media (max-width: 799px) {
+  .theme-simple .landing-content,
+  .theme-dark .landing-content {
+    padding: 0 0 40px 0;
+  }
+
+  .theme-simple .elements-grid,
+  .theme-dark .elements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .theme-simple .element-card,
+  .theme-dark .element-card {
+    container-type: inline-size;
+    flex: 0 0 155px;
+    width: 155px;
+    height: 155px;
+    aspect-ratio: 1 / 1;
+    padding: 20px 10px;
+  }
+
+  .theme-simple .element-card-title,
+  .theme-dark .element-card-title {
+    font-size: clamp(18px, 15cqi, 24px);
+    letter-spacing: var(--t-letter-spacing);
+    margin-bottom: clamp(4px, 3cqi, 8px);
+  }
+
+  .theme-simple .element-card-button,
+  .theme-dark .element-card-button {
+    font-size: clamp(10px, 7cqi, 13px);
+    padding: clamp(4px, 3cqi, 10px) clamp(8px, 8cqi, 20px);
+  }
+}
+
+/* Network Tools page - shared */
+.theme-simple .network-tools-content,
+.theme-dark .network-tools-content {
+  padding: 0 0 40px 0;
+}
+
+.theme-simple .network-tools-header,
+.theme-dark .network-tools-header {
+  margin-bottom: 0;
+}
+
+.theme-simple .network-tools-subtitle,
+.theme-dark .network-tools-subtitle {
+  padding: 10px 30px;
+  text-transform: none;
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+}
+
+.theme-simple .tools-grid,
+.theme-dark .tools-grid {
+  padding-left: 30px;
+  padding-right: 30px;
+  grid-template-columns: repeat(4, 160px);
+  gap: 16px;
+  justify-content: center;
+}
+
+.theme-simple .tool-card::before,
+.theme-dark .tool-card::before {
+  display: none;
+}
+
+.theme-simple .tool-card,
+.theme-dark .tool-card {
+  border: none;
+  width: 160px;
+  height: 160px;
+}
+
+.theme-simple .tool-card:hover,
+.theme-dark .tool-card:hover {
+  border: none;
+}
+
+.theme-simple .tool-card-title,
+.theme-dark .tool-card-title {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  font-size: 15px;
+}
+
+.theme-simple .tool-card-description,
+.theme-dark .tool-card-description {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+  font-size: 11px;
+}
+
+.theme-simple .tool-card-button,
+.theme-dark .tool-card-button {
+  background: var(--t-primary);
+  color: #ffffff;
+  border-color: var(--t-primary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+}
+
+@media (max-width: 799px) {
+  .theme-simple .network-tools-content,
+  .theme-dark .network-tools-content {
+    padding: 0 0 40px 0;
+  }
+
+  .theme-simple .tools-grid,
+  .theme-dark .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .theme-simple .tool-card,
+  .theme-dark .tool-card {
+    container-type: inline-size;
+    flex: 0 0 155px;
+    width: 155px;
+    height: 155px;
+    aspect-ratio: 1 / 1;
+    padding: 20px 10px;
+  }
+
+  .theme-simple .tool-card-title,
+  .theme-dark .tool-card-title {
+    font-size: clamp(18px, 15cqi, 24px);
+    letter-spacing: var(--t-letter-spacing);
+    margin-bottom: clamp(4px, 3cqi, 8px);
+  }
+
+  .theme-simple .tool-card-button,
+  .theme-dark .tool-card-button {
+    font-size: clamp(10px, 7cqi, 13px);
+    padding: clamp(4px, 3cqi, 10px) clamp(8px, 8cqi, 20px);
+  }
+}
+
+/* Stripe Reachability page - shared */
+.theme-simple .stripe-reachability-content,
+.theme-dark .stripe-reachability-content {
+  padding: 0 0 40px 0;
+}
+
+.theme-simple .stripe-reachability-header,
+.theme-dark .stripe-reachability-header {
+  margin-bottom: 0;
+}
+
+.theme-simple .stripe-reachability-subtitle,
+.theme-dark .stripe-reachability-subtitle {
+  padding: 10px 30px;
+  text-transform: none;
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+}
+
+.theme-simple .run-test-button,
+.theme-dark .run-test-button {
+  background: var(--t-primary);
+  color: #ffffff;
+  border: none;
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  text-transform: none;
+}
+
+.theme-simple .countdown-text,
+.theme-dark .countdown-text {
+  color: var(--t-primary);
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .results-table::before,
+.theme-dark .results-table::before {
+  display: none;
+}
+
+.theme-simple .results-table,
+.theme-dark .results-table {
+  border: none;
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .results-table th,
+.theme-dark .results-table th {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  text-transform: none;
+  font-weight: 600;
+}
+
+.theme-simple .results-table td,
+.theme-dark .results-table td {
+  color: var(--t-text-body);
+}
+
+.theme-simple .test-summary::before,
+.theme-dark .test-summary::before {
+  display: none;
+}
+
+.theme-simple .test-summary,
+.theme-dark .test-summary {
+  border: none;
+}
+
+.theme-simple .summary-title,
+.theme-dark .summary-title {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  text-transform: none;
+}
+
+.theme-simple .stat-value,
+.theme-dark .stat-value {
+  color: var(--t-primary);
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .stat-label,
+.theme-dark .stat-label {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  text-transform: none;
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .test-instructions::before,
+.theme-dark .test-instructions::before {
+  display: none;
+}
+
+.theme-simple .test-instructions,
+.theme-dark .test-instructions {
+  border: none;
+}
+
+.theme-simple .instructions-title,
+.theme-dark .instructions-title {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  text-transform: none;
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .instructions-text,
+.theme-simple .instruction-item,
+.theme-dark .instructions-text,
+.theme-dark .instruction-item {
+  color: var(--t-text-secondary);
+  font-family: var(--t-font-family);
+}
+
+/* Terminal — shared base rules */
+.theme-simple .terminal-step-label,
+.theme-dark .terminal-step-label {
+  color: var(--t-text-secondary);
+  font-family: var(--t-font-family);
+  text-shadow: none;
+}
+
+.theme-simple .terminal-help-link:hover,
+.theme-dark .terminal-help-link:hover {
+  border-color: var(--t-primary);
+  color: var(--t-primary);
+}
+
+.theme-simple .terminal-step-num.done,
+.theme-dark .terminal-step-num.done {
+  border-color: var(--t-primary);
+  color: var(--t-primary);
+  text-shadow: none;
+}
+
+.theme-simple .terminal-btn,
+.theme-dark .terminal-btn {
+  border-color: var(--t-primary);
+  color: var(--t-text-body);
+  font-family: var(--t-font-family);
+  text-shadow: none;
+}
+
+.theme-simple .terminal-btn:active:not(:disabled),
+.theme-dark .terminal-btn:active:not(:disabled) {
+  border-color: var(--t-primary-hover);
+}
+
+.theme-simple .terminal-btn-danger,
+.theme-dark .terminal-btn-danger {
+  color: var(--t-error-text);
+  border-color: var(--t-error-border);
+}
+
+.theme-simple .terminal-error-label,
+.theme-dark .terminal-error-label {
+  text-shadow: none;
+}
+
+.theme-simple .terminal-log-msg,
+.theme-dark .terminal-log-msg {
+  color: var(--t-text-body);
+  font-family: var(--t-font-family);
+}
+
+/* pulsing animation — shared */
+@keyframes pulseThemed {
+  0%, 100% { filter: drop-shadow(0 0 8px  var(--t-glow-low)); }
+  50%       { filter: drop-shadow(0 0 15px var(--t-glow-high)); }
+}
+
+.App.theme-simple .countdown-circle-progress.pulsing,
+.App.theme-dark   .countdown-circle-progress.pulsing {
+  animation-name: pulseThemed;
+}

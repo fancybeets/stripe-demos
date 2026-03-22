@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Stripe Connect Embedded Components</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://connect-js.stripe.com/v1.0/connect.js"></script>
+    <script src="frontend.js"></script>
+  </head>
+  <body>
+    <h1>Stripe Connect Embedded Components</h1>
+    <div>Account ID: <span id="account-result-container">loading...</span></div>
+    <div id="error-container" style="display: none"></div>
+    <div id="component-selector-container" style="display: none">
+      <label for="component-selector">Select Component:</label>
+      <select id="component-selector">
+        <option value="account-onboarding">Account Onboarding</option>
+        <option value="account-management">Account Management</option>
+        <option value="payments">Payments</option>
+        <option value="payouts">Payouts</option>
+        <option value="balances">Balances</option>
+        <option value="notification-banner">Notification Banner</option>
+        <option value="documents">Documents</option>
+        <option value="tax-registrations">Tax Registrations</option>
+        <option value="tax-settings">Tax Settings</option>
+      </select>
+      <div id="connect-container"></div>
+    </div>
+  </body>
+</html>
