@@ -7,7 +7,7 @@ import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
 const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
   const [error, setError] = useState(null);
@@ -38,6 +38,7 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
           amount: parseInt(amount),
           currency,
           country,
+          quantity: parseInt(quantity) || 1,
           paymentMethods: paymentMethods === 'auto' ? null : paymentMethods.split(','),
           implementation,
           mode,
@@ -73,7 +74,7 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
       abortController.abort();
       requestInFlightRef.current = false;
     };
-  }, [country, currency, amount, paymentMethods]);
+  }, [country, currency, amount, paymentMethods, quantity]);
 
   // Second effect: Initialize checkout and mount payment element
   useEffect(() => {
@@ -119,7 +120,7 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
 
     if (!form || !emailInput || !submitButton || !messageDiv) return;
 
-    const payButtonText = `Pay ${formatCurrency(amount, currency)}`;
+    const payButtonText = `Pay ${formatCurrency(String(parseInt(amount) * (parseInt(quantity) || 1)), currency)}`;
 
     const handleSubmit = async (e) => {
       e.preventDefault();
@@ -219,7 +220,7 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
           </div>
           <div id="payment-message-js-checkout" className="payment-message" style={{ display: 'none' }}></div>
           <button id="submit-button-js-checkout" type="button" className="pay-button">
-            Pay {formatCurrency(amount, currency)}
+            Pay {formatCurrency(String(parseInt(amount) * (parseInt(quantity) || 1)), currency)}
           </button>
         </form>
       ) : (

@@ -13,7 +13,7 @@ async function initialize() {
   const response = await fetch('/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+    body: JSON.stringify({ items: [{ id: 'potato' }] }),
   });
   const { clientSecret } = await response.json();
 

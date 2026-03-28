@@ -6,7 +6,7 @@ import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
 const EmbeddedCheckoutReactDefaultDemo = ({ paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
   const { theme } = useTheme();
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
@@ -30,6 +30,7 @@ const EmbeddedCheckoutReactDefaultDemo = ({ paymentOptions = {} }) => {
         amount: parseInt(amount),
         currency,
         country,
+        quantity: parseInt(quantity) || 1,
         paymentMethods: paymentMethods === 'auto' ? null : paymentMethods.split(','),
         currentQueryString: window.location.search,
         theme,
@@ -59,7 +60,7 @@ const EmbeddedCheckoutReactDefaultDemo = ({ paymentOptions = {} }) => {
       abortController.abort();
       requestInFlightRef.current = false;
     };
-  }, [amount, currency, country, paymentMethods, theme]);
+  }, [amount, currency, country, paymentMethods, quantity, theme]);
 
   if (error) {
     return (

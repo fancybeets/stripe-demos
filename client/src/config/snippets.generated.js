@@ -241,7 +241,7 @@ export default function App() {
     fetch('/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+      body: JSON.stringify({ items: [{ id: 'potato' }] }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -451,7 +451,7 @@ async function initialize() {
   const response = await fetch('/create-payment-intent', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+    body: JSON.stringify({ items: [{ id: 'potato' }] }),
   });
   const { clientSecret } = await response.json();
 
@@ -721,7 +721,7 @@ export default function App() {
     fetch('/create-payment-intent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+      body: JSON.stringify({ items: [{ id: 'potato' }] }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -920,7 +920,7 @@ async function initialize() {
   const response = await fetch('/create-payment-intent', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+    body: JSON.stringify({ items: [{ id: 'potato' }] }),
   });
   const { clientSecret } = await response.json();
 
@@ -1164,7 +1164,7 @@ export default function App() {
     fetch('/create-checkout-session', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+      body: JSON.stringify({ items: [{ id: 'potato' }] }),
     })
       .then((res) => res.json())
       .then((data) => setClientSecret(data.clientSecret));
@@ -1205,7 +1205,8 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'T-shirt',
+            name: 'Potato',
+            images: ['https://stripe.erintaylor.dev/potato.png'],
           },
           unit_amount: calculateOrderAmount(items),
         },
@@ -1261,7 +1262,7 @@ async function initialize() {
   const response = await fetch('/create-checkout-session', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'xl-tshirt' }] }),
+    body: JSON.stringify({ items: [{ id: 'potato' }] }),
   });
   const { clientSecret } = await response.json();
 
@@ -1338,7 +1339,8 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'T-shirt',
+            name: 'Potato',
+            images: ['https://stripe.erintaylor.dev/potato.png'],
           },
           unit_amount: calculateOrderAmount(items),
         },
@@ -1610,7 +1612,7 @@ app.post('/embedded-checkout/create-session', async (req, res) => {
     line_items: [{
       price_data: {
         currency,
-        product_data: { name: 'Demo Product' },
+        product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
         unit_amount: amount,
       },
       quantity: 1,
@@ -1652,7 +1654,7 @@ app.post('/embedded-checkout/create-session', async (req, res) => {
     line_items: [{
       price_data: {
         currency,
-        product_data: { name: 'Demo Product' },
+        product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
         unit_amount: amount,
       },
       quantity: 1,
@@ -2352,7 +2354,7 @@ A minimal Express + vanilla JS app that demonstrates Stripe Connect Embedded Com
     <h1>Stripe Hosted Checkout</h1>
     <p>Click below to be redirected to Stripe's hosted checkout page.</p>
     <div id="product">
-      <span id="product-name">Demo Product</span>
+      <span id="product-name">Potato</span>
       <span id="product-price">$20.00</span>
     </div>
     <button id="checkout-button">Checkout</button>
@@ -2458,7 +2460,7 @@ app.post('/create-checkout-session', async (req, res) => {
       line_items: [{
         price_data: {
           currency,
-          product_data: { name: 'Demo Product' },
+          product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
           unit_amount: amount,
         },
         quantity: 1,

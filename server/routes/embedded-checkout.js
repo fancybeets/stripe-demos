@@ -5,7 +5,7 @@ const { createStripeInstance, getStripeConfig } = require('../middleware/stripeI
 
 router.post('/create-session', async (req, res) => {
   try {
-    const { amount, currency = 'usd', paymentMethods, country = 'US', currentQueryString, theme = 'apocalypse' } = req.body;
+    const { amount, currency = 'usd', paymentMethods, country = 'US', quantity = 1, currentQueryString, theme = 'apocalypse' } = req.body;
 
     const brandingByTheme = {
       apocalypse: {
@@ -60,10 +60,10 @@ router.post('/create-session', async (req, res) => {
       line_items: [{
         price_data: {
           currency,
-          product_data: { name: 'Demo Product' },
+          product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
           unit_amount: amount || 2000,
         },
-        quantity: 1,
+        quantity: parseInt(quantity) || 1,
       }],
     };
 

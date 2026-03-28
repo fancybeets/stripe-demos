@@ -5,7 +5,7 @@ const { createStripeInstance, getStripeConfig } = require('../middleware/stripeI
 
 router.post('/create-session', async (req, res) => {
   try {
-    const { amount, currency = 'usd', paymentMethods, country = 'US', currentQueryString } = req.body;
+    const { amount, currency = 'usd', paymentMethods, country = 'US', quantity = 1, currentQueryString } = req.body;
 
     const stripe = createStripeInstance(country);
     const { publishableKey } = getStripeConfig(country);
@@ -21,6 +21,7 @@ router.post('/create-session', async (req, res) => {
     if (country) returnParams.set('country', country);
     if (currency) returnParams.set('currency', currency);
     if (amount) returnParams.set('amount', amount);
+    if (quantity && quantity !== 1) returnParams.set('quantity', quantity);
     if (paymentMethods) {
       returnParams.set('paymentMethods', Array.isArray(paymentMethods) ? paymentMethods.join(',') : paymentMethods);
     }
@@ -36,10 +37,10 @@ router.post('/create-session', async (req, res) => {
       line_items: [{
         price_data: {
           currency,
-          product_data: { name: 'Demo Product' },
+          product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
           unit_amount: amount || 2000,
         },
-        quantity: 1,
+        quantity: parseInt(quantity) || 1,
       }],
     };
 

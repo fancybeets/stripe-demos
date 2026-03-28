@@ -111,6 +111,6 @@ const EmbeddedCheckoutIntegration = ({ initialParams = {}, activeView = 'demo', 
   );
 };
 
-EmbeddedCheckoutIntegration.sidebarOptions = ['implementation', 'country', 'currency', 'amount'];
+EmbeddedCheckoutIntegration.sidebarOptions = ['implementation', 'country', 'currency', 'amount', 'quantity'];
 
 export default EmbeddedCheckoutIntegration;
