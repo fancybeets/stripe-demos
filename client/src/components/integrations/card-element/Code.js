@@ -1,19 +1,13 @@
 import React from 'react';
-import CardElementReactDefault from './react-default/Code';
 import CardElementJSDefault from './js-default/Code';
 
 const CardElementCode = ({ implementation, mode, paymentOptions }) => {
-  const key = `${implementation}-default`;
-  const components = {
-    'react-default': CardElementReactDefault,
-    'javascript-default': CardElementJSDefault,
-  };
-
-  const Component = components[key];
+  const isReact = implementation === 'react';
 
   return (
     <div className="view-content">
-      <Component />
+      {isReact && <div className="react-unavailable-notice">React code examples are not available for this demo yet. Showing vanilla JavaScript instead.</div>}
+      <CardElementJSDefault />
     </div>
   );
 };

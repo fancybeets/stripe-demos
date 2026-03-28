@@ -420,3 +420,14 @@ form {
   -webkit-text-fill-color: #ffb000 !important;
   transition: background-color 5000s ease-in-out 0s;
 }
+
+.react-unavailable-notice {
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: #ffb000;
+  background: #1a1a1a;
+  border: 2px solid #ffb000;
+  padding: 8px 12px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}

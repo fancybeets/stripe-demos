@@ -857,3 +857,13 @@
 .App.theme-dark   .countdown-circle-progress.pulsing {
   animation-name: pulseThemed;
 }
+
+.theme-simple .react-unavailable-notice,
+.theme-dark .react-unavailable-notice {
+  font-family: var(--t-font-family);
+  font-size: 13px;
+  color: var(--t-error-text);
+  background: var(--t-error-bg);
+  border: 1px solid var(--t-error-border);
+  letter-spacing: var(--t-letter-spacing);
+}
