@@ -2345,7 +2345,6 @@ A minimal Express + vanilla JS app that demonstrates Stripe Connect Embedded Com
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stripe Hosted Checkout</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
