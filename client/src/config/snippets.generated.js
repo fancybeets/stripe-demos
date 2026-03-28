@@ -2339,4 +2339,175 @@ A minimal Express + vanilla JS app that demonstrates Stripe Connect Embedded Com
 `,
     },
   },
+  'hosted-checkout': {
+    'js': {
+      html: `<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stripe Hosted Checkout</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Stripe Hosted Checkout</h1>
+    <p>Click below to be redirected to Stripe's hosted checkout page.</p>
+    <div id="product">
+      <span id="product-name">Demo Product</span>
+      <span id="product-price">$20.00</span>
+    </div>
+    <button id="checkout-button">Checkout</button>
+    <div id="error-container" style="display: none;"></div>
+    <script src="frontend.js"></script>
+  </body>
+</html>
+`,
+      styles: `body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+#product {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #635bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #5851eb;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+#error-container {
+  color: #df1b41;
+  margin-top: 12px;
+  font-size: 14px;
+}
+`,
+      frontend: `// Make sure to replace this with your own Stripe Sandbox publishable key.
+const PUBLISHABLE_KEY = 'pk_test_...';
+
+document.addEventListener('DOMContentLoaded', () => {
+  const button = document.getElementById('checkout-button');
+  const errorContainer = document.getElementById('error-container');
+
+  button.addEventListener('click', async () => {
+    button.disabled = true;
+    button.textContent = 'Redirecting...';
+    errorContainer.style.display = 'none';
+
+    try {
+      const response = await fetch('/create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amount: 2000, currency: 'usd' }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error?.message || 'Failed to create checkout session');
+      }
+
+      window.location.href = data.url;
+    } catch (err) {
+      errorContainer.textContent = err.message;
+      errorContainer.style.display = '';
+      button.disabled = false;
+      button.textContent = 'Checkout';
+    }
+  });
+});
+`,
+      server: `// Make sure to replace this with your own Stripe Sandbox secret key.
+const stripe = require('stripe')('sk_test_...');
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+app.use(express.static('.'));
+
+app.post('/create-checkout-session', async (req, res) => {
+  try {
+    const { amount = 2000, currency = 'usd' } = req.body;
+
+    const session = await stripe.checkout.sessions.create({
+      mode: 'payment',
+      ui_mode: 'hosted',
+      success_url: 'http://localhost:4242/success.html?session_id={CHECKOUT_SESSION_ID}',
+      cancel_url: 'http://localhost:4242/',
+      line_items: [{
+        price_data: {
+          currency,
+          product_data: { name: 'Demo Product' },
+          unit_amount: amount,
+        },
+        quantity: 1,
+      }],
+    });
+
+    res.json({ url: session.url });
+  } catch (error) {
+    res.status(400).send({
+      error: {
+        message: \`\${error.message} - make sure you've replaced sk_test_... in server.js with your secret key from https://dashboard.stripe.com/test/apikeys\`,
+      },
+    });
+  }
+});
+
+app.listen(4242, () => console.log('Server running on port ' + (4242)));
+`,
+      packageJson: `{
+  "name": "hosted-checkout-js",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "stripe": "^17.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
+`,
+      readme: `# Stripe Hosted Checkout Demo
+
+A minimal Express + vanilla JS app that demonstrates Stripe's hosted checkout (redirects to stripe.com/checkout).
+
+## Setup
+
+1. Ensure you have a [Node.js installation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Download the project, unzip it, and \`cd\` into the project folder.
+3. Open the project in your text editor of choice (e.g. \`code .\`, \`cursor .\`)
+4. Create or log into your Stripe sandbox account, then get your API keys from [dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys).
+5. Replace \`sk_test_...\` in \`server.js\` with your Sandbox secret key.
+6. Install dependencies and start the server: \`npm install && npm start\`
+7. Open [http://localhost:4242](http://localhost:4242) in a browser.
+8. Click "Checkout" to be redirected to Stripe's hosted checkout page.
+`,
+    },
+  },
 };

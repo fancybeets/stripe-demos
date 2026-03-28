@@ -11,6 +11,7 @@ import EmbeddedCheckoutIntegration from './components/integrations/embedded-chec
 import TerminalIntegration from './components/integrations/terminal/Terminal';
 import TerminalJsSdkIntegration from './components/integrations/terminal-js-sdk/TerminalJsSdk';
 import ConnectEmbeddedIntegration from './components/integrations/connect-embedded/ConnectEmbedded';
+import HostedCheckoutIntegration from './components/integrations/hosted-checkout/HostedCheckout';
 import NetworkTools from './components/integrations/NetworkTools';
 import StripeReachability from './components/tools/StripeReachability';
 import About from './components/About';
@@ -73,6 +74,11 @@ function App() {
       setCurrentView({
         type: 'terminal-js-sdk',
         content: <TerminalJsSdkIntegration initialParams={queryParams} />,
+      });
+    } else if (pathname === '/hosted-checkout') {
+      setCurrentView({
+        type: 'hosted-checkout',
+        content: <HostedCheckoutIntegration initialParams={queryParams} />,
       });
     } else if (pathname === '/connect-embedded') {
       setCurrentView({

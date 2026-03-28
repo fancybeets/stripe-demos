@@ -28,6 +28,13 @@ export const elements = [
     route: '/embedded-checkout?implementation=react&mode=default'
   },
   {
+    id: 'hosted-checkout',
+    tab: 'HOSTED',
+    title: 'Hosted Checkout',
+    description: 'Redirect to Stripe-hosted checkout page for a complete, prebuilt payment experience',
+    route: '/hosted-checkout'
+  },
+  {
     id: 'card-element',
     tab: 'CARD',
     title: 'Card Element',

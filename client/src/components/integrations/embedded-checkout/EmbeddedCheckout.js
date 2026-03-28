@@ -1,15 +1,41 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import EmbeddedCheckoutDemo from './Demo';
 import EmbeddedCheckoutCode from './Code';
 import EmbeddedCheckoutAbout from './About';
+import SuccessMessage from '../../shared/SuccessMessage';
 import '../Integration.css';
 
 const EmbeddedCheckoutIntegration = ({ initialParams = {}, activeView = 'demo', onViewChange, implementation: propImplementation, paymentOptions = {} }) => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const [implementation, setImplementation] = useState(propImplementation || initialParams.implementation || 'react');
+  const sessionId = initialParams.session_id || null;
 
   React.useEffect(() => {
     if (propImplementation) setImplementation(propImplementation);
   }, [propImplementation]);
+
+  if (sessionId) {
+    const handleBack = () => {
+      const params = new URLSearchParams(location.search);
+      params.delete('session_id');
+      const qs = params.toString();
+      navigate(`/embedded-checkout${qs ? '?' + qs : ''}`);
+    };
+    return (
+      <div className="integration-content-wrapper">
+        <div className="view-content" style={{ padding: '40px 20px', textAlign: 'center' }}>
+          <SuccessMessage
+            title="PAYMENT COMPLETE"
+            message="Payment successful! Your order has been confirmed."
+            intentId={`Session: ${sessionId}`}
+            onBack={handleBack}
+          />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="integration-content-wrapper">

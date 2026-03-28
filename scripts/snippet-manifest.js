@@ -39,4 +39,10 @@ module.exports = {
       files: ['index.html', 'styles.css', 'frontend.js', 'server.js', 'package.json', 'README.md'],
     },
   },
+  'hosted-checkout': {
+    'js': {
+      dir: 'client/src/components/integrations/hosted-checkout/app',
+      files: ['index.html', 'styles.css', 'frontend.js', 'server.js', 'package.json', 'README.md'],
+    },
+  },
 };

@@ -98,6 +98,7 @@ const DeviceLayout = ({ children }) => {
                      location.pathname === '/checkout-sessions' ? 'CHECKOUT' :
                      location.pathname === '/payment-request-button' ? 'PRB' :
                      location.pathname === '/embedded-checkout' ? 'EMBEDDED' :
+                     location.pathname === '/hosted-checkout' ? 'HOSTED' :
                      location.pathname === '/terminal-server-driven' ? 'TERMINAL' :
                      location.pathname === '/terminal-js-sdk' ? 'TERM-JS' :
                      location.pathname === '/connect-embedded' ? 'CONNECT' :
@@ -314,6 +315,15 @@ const DeviceLayout = ({ children }) => {
         params.set('connectComponent', connectComponent);
         preserveLogsParam(params);
         navigate(`/connect-embedded?${params.toString()}`);
+        return;
+      }
+      if (tab === 'HOSTED') {
+        const params = new URLSearchParams();
+        params.set('country', country);
+        params.set('currency', currency);
+        params.set('amount', amount);
+        preserveLogsParam(params);
+        navigate(`/hosted-checkout?${params.toString()}`);
         return;
       }
 

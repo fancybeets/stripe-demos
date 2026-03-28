@@ -5,29 +5,8 @@ const { createStripeInstance, getStripeConfig } = require('../middleware/stripeI
 
 router.post('/create-session', async (req, res) => {
   try {
-    const { amount, currency = 'usd', paymentMethods, country = 'US', currentQueryString, theme = 'apocalypse' } = req.body;
+    const { amount, currency = 'usd', paymentMethods, country = 'US', currentQueryString } = req.body;
 
-    const brandingByTheme = {
-      apocalypse: {
-        background_color: '#0a0a0a',
-        button_color: '#ffb000',
-        border_style: 'rectangular',
-        font_family: 'inconsolata',
-      },
-      simple: {
-        background_color: '#ffffff',
-        button_color: '#635BFF',
-        border_style: 'rounded',
-        font_family: 'inter',
-      },
-      dark: {
-        background_color: '#16161f',
-        button_color: '#a78bfa',
-        border_style: 'rounded',
-        font_family: 'inter',
-      },
-    };
-    const branding_settings = brandingByTheme[theme] || brandingByTheme.simple;
     const stripe = createStripeInstance(country);
     const { publishableKey } = getStripeConfig(country);
 
@@ -46,17 +25,14 @@ router.post('/create-session', async (req, res) => {
       returnParams.set('paymentMethods', Array.isArray(paymentMethods) ? paymentMethods.join(',') : paymentMethods);
     }
 
-    const baseUrl = `${req.headers.origin || 'http://localhost:3000'}/embedded-checkout`;
+    const baseUrl = `${req.headers.origin || 'http://localhost:3000'}/hosted-checkout`;
     const queryString = returnParams.toString();
-    const returnUrl = queryString
-      ? `${baseUrl}?session_id={CHECKOUT_SESSION_ID}&${queryString}`
-      : `${baseUrl}?session_id={CHECKOUT_SESSION_ID}`;
 
     const sessionParams = {
       mode: 'payment',
-      ui_mode: 'embedded',
-      return_url: returnUrl,
-      branding_settings,
+      ui_mode: 'hosted',
+      success_url: `${baseUrl}?session_id={CHECKOUT_SESSION_ID}${queryString ? '&' + queryString : ''}`,
+      cancel_url: queryString ? `${baseUrl}?${queryString}` : baseUrl,
       line_items: [{
         price_data: {
           currency,
@@ -74,7 +50,7 @@ router.post('/create-session', async (req, res) => {
     const session = await stripe.checkout.sessions.create(sessionParams);
 
     res.json({
-      clientSecret: session.client_secret,
+      url: session.url,
       sessionId: session.id,
       publishableKey,
       stripeRequestId: session.lastResponse?.requestId || null,
