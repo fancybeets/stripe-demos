@@ -7,7 +7,7 @@ import { logCheckoutCreation, checkoutUpdateEmail, checkoutConfirm } from '../..
 import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
-const CheckoutForm = ({ amount, currency }) => {
+const CheckoutForm = ({ amount, currency, quantity = '1' }) => {
   const checkoutState = useCheckout();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -73,14 +73,14 @@ const CheckoutForm = ({ amount, currency }) => {
       </div>
       {message && <div className="payment-message">{message}</div>}
       <button disabled={isLoading || !checkoutState?.checkout || !isReady || !email} className="pay-button">
-        {isLoading ? 'Processing...' : isReady ? `Pay ${formatCurrency(amount, currency)}` : 'Loading...'}
+        {isLoading ? 'Processing...' : isReady ? `Pay ${formatCurrency(String(parseInt(amount) * (parseInt(quantity) || 1)), currency)}` : 'Loading...'}
       </button>
     </form>
   );
 };
 
 const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
   const [error, setError] = useState(null);
@@ -107,6 +107,7 @@ const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions
         amount: parseInt(amount),
         currency,
         country,
+        quantity: parseInt(quantity) || 1,
         paymentMethods: paymentMethods === 'auto' ? null : paymentMethods.split(','),
         implementation,
         mode,
@@ -144,7 +145,7 @@ const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions
       abortController.abort();
       requestInFlightRef.current = false;
     };
-  }, [amount, currency, country, paymentMethods]);
+  }, [amount, currency, country, paymentMethods, quantity]);
 
   if (error) {
     return <div className="error-message">Error: {error}</div>;
@@ -164,7 +165,7 @@ const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions
         }
       }}
     >
-      <CheckoutForm amount={amount} currency={currency} />
+      <CheckoutForm amount={amount} currency={currency} quantity={quantity} />
     </CheckoutProvider>
   );
 };

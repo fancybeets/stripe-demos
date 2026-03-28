@@ -6,7 +6,7 @@ const { createStripeInstance, getStripeConfig } = require('../middleware/stripeI
 // Default checkout session - created upfront with all details
 router.post('/create-session/default', async (req, res) => {
   try {
-    const { amount, currency = 'usd', paymentMethods, country = 'US', implementation, mode, currentQueryString } = req.body;
+    const { amount, currency = 'usd', paymentMethods, country = 'US', quantity = 1, implementation, mode, currentQueryString } = req.body;
     const stripe = createStripeInstance(country);
     const { publishableKey } = getStripeConfig(country);
 
@@ -46,11 +46,12 @@ router.post('/create-session/default', async (req, res) => {
         price_data: {
           currency,
           product_data: {
-            name: 'Demo Product',
+            name: 'Potato',
+            images: ['https://stripe.erintaylor.dev/potato.png'],
           },
           unit_amount: amount || 2000,
         },
-        quantity: 1,
+        quantity: parseInt(quantity) || 1,
       }],
     };
 

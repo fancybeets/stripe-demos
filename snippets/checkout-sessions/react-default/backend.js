@@ -22,7 +22,8 @@ app.post('/create-checkout-session', async (req, res) => {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: 'T-shirt',
+            name: 'Potato',
+            images: ['https://stripe.erintaylor.dev/potato.png'],
           },
           unit_amount: calculateOrderAmount(items),
         },

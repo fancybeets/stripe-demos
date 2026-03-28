@@ -76,6 +76,6 @@ const HostedCheckoutIntegration = ({ initialParams = {}, activeView = 'demo', on
   );
 };
 
-HostedCheckoutIntegration.sidebarOptions = ['country', 'currency', 'amount'];
+HostedCheckoutIntegration.sidebarOptions = ['country', 'currency', 'amount', 'quantity'];
 
 export default HostedCheckoutIntegration;

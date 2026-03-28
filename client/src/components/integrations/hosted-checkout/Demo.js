@@ -5,7 +5,7 @@ import '../Integration.css';
 import './Demo.css';
 
 const HostedCheckoutDemo = ({ paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '2000' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '2000', quantity = '1' } = paymentOptions;
   const { addLog: addApiLog } = useApiLogger();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -20,6 +20,7 @@ const HostedCheckoutDemo = ({ paymentOptions = {} }) => {
         amount: parseInt(amount),
         currency,
         country,
+        quantity: parseInt(quantity) || 1,
         currentQueryString: window.location.search,
       };
 
@@ -58,7 +59,7 @@ const HostedCheckoutDemo = ({ paymentOptions = {} }) => {
   const formattedAmount = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: currency.toUpperCase(),
-  }).format(parseInt(amount) / 100);
+  }).format((parseInt(amount) * (parseInt(quantity) || 1)) / 100);
 
   return (
     <div className="hosted-checkout-demo">
@@ -69,7 +70,7 @@ const HostedCheckoutDemo = ({ paymentOptions = {} }) => {
         </div>
       )}
       <div className="hosted-checkout-product">
-        <div className="hosted-checkout-product-name">Demo Product</div>
+        <div className="hosted-checkout-product-name">{parseInt(quantity) > 1 ? `${parseInt(quantity)}x ` : ''}Potato</div>
         <div className="hosted-checkout-product-price">{formattedAmount}</div>
       </div>
       <button

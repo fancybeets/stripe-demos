@@ -9,7 +9,7 @@ app.post('/embedded-checkout/create-session', async (req, res) => {
     line_items: [{
       price_data: {
         currency,
-        product_data: { name: 'Demo Product' },
+        product_data: { name: 'Potato', images: ['https://stripe.erintaylor.dev/potato.png'] },
         unit_amount: amount,
       },
       quantity: 1,

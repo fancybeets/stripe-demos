@@ -27,6 +27,7 @@ const DeviceLayout = ({ children }) => {
   const [readerMode, setReaderMode] = useState(params.get('readerMode') || 'simulated');
   const [connectComponent, setConnectComponent] = useState(params.get('connectComponent') || 'account_onboarding');
   const [additionalElements, setAdditionalElements] = useState(params.get('additionalElements') || '');
+  const [quantity, setQuantity] = useState(params.get('quantity') || '1');
   const [showPaymentMethodsSelector, setShowPaymentMethodsSelector] = useState(false);
   const [showConnectComponentSelector, setShowConnectComponentSelector] = useState(false);
   const [showCountrySelector, setShowCountrySelector] = useState(false);
@@ -51,6 +52,7 @@ const DeviceLayout = ({ children }) => {
   const [pendingAmount, setPendingAmount] = useState(null);
   const [pendingPaymentMethods, setPendingPaymentMethods] = useState(null);
   const [pendingAdditionalElements, setPendingAdditionalElements] = useState(null);
+  const [pendingQuantity, setPendingQuantity] = useState(null);
   const [knobRotating, setKnobRotating] = useState(false);
   const [knobSpinning, setKnobSpinning] = useState(false);
   const [isEasterEggRunning, setIsEasterEggRunning] = useState(false);
@@ -257,6 +259,11 @@ const DeviceLayout = ({ children }) => {
       setConnectComponent(urlConnectComponent);
     }
 
+    const urlQuantity = params.get('quantity');
+    if (urlQuantity) {
+      setQuantity(urlQuantity);
+    }
+
     // Clear pending changes when URL changes
     setPendingImplementation(null);
     setPendingMode(null);
@@ -265,6 +272,7 @@ const DeviceLayout = ({ children }) => {
     setPendingAmount(null);
     setPendingPaymentMethods(null);
     setPendingAdditionalElements(null);
+    setPendingQuantity(null);
     setShowPaymentMethodsSelector(false);
     setShowCountrySelector(false);
     setShowCurrencySelector(false);
@@ -327,6 +335,7 @@ const DeviceLayout = ({ children }) => {
         params.set('country', country);
         params.set('currency', currency);
         params.set('amount', amount);
+        params.set('quantity', quantity);
         preserveLogsParam(params);
         navigate(`/hosted-checkout?${params.toString()}`);
         return;
@@ -499,6 +508,11 @@ const DeviceLayout = ({ children }) => {
     rotateKnob();
   };
 
+  const handleQuantityChange = (qty) => {
+    setPendingQuantity(qty);
+    rotateKnob();
+  };
+
   const handlePaymentMethodsChange = (methods) => {
     setPendingPaymentMethods(methods);
     rotateKnob();
@@ -662,12 +676,23 @@ const DeviceLayout = ({ children }) => {
     const newAmount = pendingAmount !== null ? pendingAmount : amount;
     const newPaymentMethods = pendingPaymentMethods !== null ? pendingPaymentMethods : paymentMethods;
     const newAdditionalElements = pendingAdditionalElements !== null ? pendingAdditionalElements : additionalElements;
+    const newQuantity = pendingQuantity !== null ? pendingQuantity : quantity;
 
     if (currentTab === 'TERMINAL' || currentTab === 'TERM-JS') {
       navigateAnyTerminal(newCountry, newCurr, newAmount);
       return;
     }
     if (currentTab === 'CONNECT') {
+      return;
+    }
+    if (currentTab === 'HOSTED') {
+      const params = new URLSearchParams();
+      params.set('country', newCountry);
+      params.set('currency', newCurr);
+      params.set('amount', newAmount);
+      params.set('quantity', newQuantity);
+      preserveLogsParam(params);
+      navigate(`/hosted-checkout?${params.toString()}`);
       return;
     }
 
@@ -684,6 +709,7 @@ const DeviceLayout = ({ children }) => {
       params.set('country', newCountry);
       params.set('currency', newCurr);
       params.set('amount', newAmount);
+      params.set('quantity', newQuantity);
       params.set('paymentMethods', newPaymentMethods);
       if (newAdditionalElements) {
         params.set('additionalElements', newAdditionalElements);
@@ -693,7 +719,7 @@ const DeviceLayout = ({ children }) => {
     }
   };
 
-  const hasPendingChanges = pendingImplementation !== null || pendingMode !== null || pendingCountry !== null || pendingCurrency !== null || pendingAmount !== null || pendingPaymentMethods !== null || pendingAdditionalElements !== null;
+  const hasPendingChanges = pendingImplementation !== null || pendingMode !== null || pendingCountry !== null || pendingCurrency !== null || pendingAmount !== null || pendingPaymentMethods !== null || pendingAdditionalElements !== null || pendingQuantity !== null;
 
   const handleClose = () => {
     navigate('/');
@@ -963,7 +989,7 @@ const DeviceLayout = ({ children }) => {
             )}
           </div>
         )}
-        {(has('currency') || has('amount') || has('paymentMethods')) && (
+        {(has('currency') || has('amount') || has('paymentMethods') || has('quantity')) && (
           <div className="device-sidebar-section">
             <div className="device-sidebar-title" onClick={() => toggleSection('paymentOptions')} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
               <span>PAYMENT OPTIONS</span>
@@ -990,6 +1016,20 @@ const DeviceLayout = ({ children }) => {
                       min="50"
                       step="1"
                       placeholder="Amount in cents"
+                    />
+                  </div>
+                )}
+                {has('quantity') && (
+                  <div className="device-option-row">
+                    <div className="device-option-label">QUANTITY</div>
+                    <input
+                      type="number"
+                      className="device-input device-input-inline"
+                      value={pendingQuantity !== null ? pendingQuantity : quantity}
+                      onChange={(e) => handleQuantityChange(e.target.value)}
+                      min="1"
+                      step="1"
+                      placeholder="Quantity"
                     />
                   </div>
                 )}
@@ -1057,7 +1097,7 @@ const DeviceLayout = ({ children }) => {
       ? `${country}-${readerMode}`
       : isConnectPage
       ? `${country}-${connectComponent}`
-      : `${implementation}-${mode}-${country}-${currency}-${amount}-${paymentMethods}-${additionalElements}-${readerMode}`,
+      : `${implementation}-${mode}-${country}-${currency}-${amount}-${paymentMethods}-${additionalElements}-${readerMode}-${quantity}`,
     activeView,
     onViewChange: handleViewChange,
     onNavigate: () => {
@@ -1066,7 +1106,7 @@ const DeviceLayout = ({ children }) => {
     },
     implementation,
     mode,
-    paymentOptions: { country, currency, amount, paymentMethods, readerMode, connectComponent, additionalElements },
+    paymentOptions: { country, currency, amount, paymentMethods, readerMode, connectComponent, additionalElements, quantity },
     currentTab,
     onMaximize: handleMaximize,
     isMaximized,
@@ -1669,7 +1709,7 @@ const DeviceLayout = ({ children }) => {
                       </div>
                     )}
 
-                    {(has('currency') || has('amount') || has('paymentMethods')) && (
+                    {(has('currency') || has('amount') || has('paymentMethods') || has('quantity')) && (
                       <div className="device-sidebar-section">
                         <div className="device-sidebar-title" onClick={() => toggleSection('paymentOptions')} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                           <span>PAYMENT OPTIONS</span>
@@ -1699,6 +1739,20 @@ const DeviceLayout = ({ children }) => {
                                   min="50"
                                   step="1"
                                   placeholder="Amount in cents"
+                                />
+                              </div>
+                            )}
+                            {has('quantity') && (
+                              <div className="device-option-row">
+                                <div className="device-option-label">QUANTITY</div>
+                                <input
+                                  type="number"
+                                  className="device-input device-input-inline"
+                                  value={pendingQuantity !== null ? pendingQuantity : quantity}
+                                  onChange={(e) => handleQuantityChange(e.target.value)}
+                                  min="1"
+                                  step="1"
+                                  placeholder="Quantity"
                                 />
                               </div>
                             )}
