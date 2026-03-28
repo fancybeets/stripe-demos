@@ -1,0 +1,179 @@
+/* ============================================================
+   BASE (APOCALYPSE — amber)
+   ============================================================ */
+
+.hosted-checkout-demo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  padding: 40px 20px;
+}
+
+.hosted-checkout-product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255, 176, 0, 0.35);
+  padding: 28px 48px;
+  margin-bottom: 28px;
+  background: rgba(255, 176, 0, 0.03);
+  box-shadow: 0 0 20px rgba(255, 176, 0, 0.06);
+  min-width: 260px;
+}
+
+.hosted-checkout-product-name {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  color: rgba(255, 176, 0, 0.7);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.hosted-checkout-product-price {
+  font-family: 'Courier New', monospace;
+  font-size: 32px;
+  font-weight: bold;
+  color: #ffb000;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 176, 0, 0.5);
+}
+
+.hosted-checkout-button {
+  background: #1a1a1a;
+  color: #ffb000;
+  border: 2px solid #ffb000;
+  padding: 12px 40px;
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  cursor: pointer;
+  text-shadow: 0 0 5px #ffb000;
+  text-transform: uppercase;
+  min-width: 200px;
+  transition: background 0.15s;
+}
+
+.hosted-checkout-button:hover:not(:disabled) {
+  background: #2a2a2a;
+  box-shadow: 0 0 12px rgba(255, 176, 0, 0.4);
+}
+
+.hosted-checkout-button:active:not(:disabled) {
+  border-color: #442200 #ffb000 #ffb000 #442200;
+}
+
+.hosted-checkout-button:disabled {
+  color: rgba(255, 176, 0, 0.4);
+  border-color: rgba(255, 176, 0, 0.2);
+  cursor: not-allowed;
+  text-shadow: none;
+}
+
+/* ============================================================
+   SIMPLE THEME
+   ============================================================ */
+
+.theme-simple .hosted-checkout-product {
+  border-color: #e0e0e0;
+  background: #f8f8fd;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.theme-simple .hosted-checkout-product-name {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #888;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.theme-simple .hosted-checkout-product-price {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #1a1a1a;
+  text-shadow: none;
+}
+
+.theme-simple .hosted-checkout-button {
+  background: #635BFF;
+  color: #fff;
+  border-color: #635BFF;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.theme-simple .hosted-checkout-button:hover:not(:disabled) {
+  background: #5147e6;
+  box-shadow: 0 2px 10px rgba(99, 91, 255, 0.35);
+}
+
+.theme-simple .hosted-checkout-button:active:not(:disabled) {
+  border-color: #635BFF;
+  background: #4a41d4;
+}
+
+.theme-simple .hosted-checkout-button:disabled {
+  background: #e8e8f8;
+  color: #aaa;
+  border-color: #e8e8f8;
+  text-shadow: none;
+}
+
+/* ============================================================
+   DARK THEME
+   ============================================================ */
+
+.theme-dark .hosted-checkout-product {
+  border-color: #2d2d3d;
+  background: rgba(167, 139, 250, 0.03);
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.05);
+}
+
+.theme-dark .hosted-checkout-product-name {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #9090a8;
+  letter-spacing: normal;
+  text-transform: none;
+  font-weight: 600;
+}
+
+.theme-dark .hosted-checkout-product-price {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: #e0e0f0;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
+}
+
+.theme-dark .hosted-checkout-button {
+  background: #1e1e2e;
+  color: #c0beff;
+  border-color: #a78bfa;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  letter-spacing: normal;
+  text-shadow: none;
+  text-transform: none;
+}
+
+.theme-dark .hosted-checkout-button:hover:not(:disabled) {
+  background: rgba(167, 139, 250, 0.15);
+  box-shadow: 0 0 12px rgba(167, 139, 250, 0.25);
+}
+
+.theme-dark .hosted-checkout-button:active:not(:disabled) {
+  border-color: #a78bfa;
+  background: rgba(167, 139, 250, 0.25);
+}
+
+.theme-dark .hosted-checkout-button:disabled {
+  background: #12121a;
+  color: #333344;
+  border-color: #1e1e2e;
+  text-shadow: none;
+}
