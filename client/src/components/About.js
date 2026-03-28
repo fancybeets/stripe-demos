@@ -9,7 +9,7 @@ const About = ({ onNavigate }) => {
           <div className="about-title">THE SITE</div>
           <div className="about-content">
             <p>This site is meant to provide quick, simple, and customizable demonstrations of Stripe's frontend capabilities. It was heavily inspired by <a href="https://4242.io" target="_blank" rel="noreferrer">4242.io</a> and incorporates ideas and influences from many of my amazing colleagues, past and present.</p>
-            <p>The source code is available on <a href="https://github.com/fancybeets/stripe-demo" target="_blank" rel="noreferrer">GitHub</a>.</p>
+            <p>The source code is available on <a href="https://github.com/fancybeets/stripe-demos" target="_blank" rel="noreferrer">GitHub</a>.</p>
           </div>
         </div>
 

@@ -80,7 +80,7 @@ const DeviceLayout = ({ children }) => {
     if (rotate === 0 && x === 0 && y === 0) return {};
     return { transform: `translate(${x}px, ${y}px) rotate(${rotate}deg)` };
   }, [fallenScrews, fallingScrew, spinningScrew, screenFalling, screenFallen]);
-  const [activeView, setActiveView] = useState('demo');
+  const [activeView, setActiveView] = useState(params.get('view') || 'demo');
   const [isMaximized, setIsMaximized] = useState(() => localStorage.getItem('maximized') === 'true');
   const [isFading, setIsFading] = useState(false);
   const [isMobile, setIsMobile] = useState(() => window.innerWidth < 800);
@@ -181,6 +181,11 @@ const DeviceLayout = ({ children }) => {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  useEffect(() => {
+    const p = new URLSearchParams(location.search);
+    setActiveView(p.get('view') || 'demo');
+  }, [location.pathname, location.search]);
 
   useEffect(() => {
     if (!showAllDropdown) return;
@@ -720,6 +725,10 @@ const DeviceLayout = ({ children }) => {
   const handleViewChange = (view) => {
     setActiveView(view);
     rotateKnob();
+    const p = new URLSearchParams(location.search);
+    p.set('view', view);
+    const qs = p.toString();
+    navigate(`${location.pathname}${qs ? '?' + qs : ''}`, { replace: true });
   };
 
   const applyMaximizeStyles = (screen, maximize) => {
