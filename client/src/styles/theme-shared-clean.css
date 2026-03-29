@@ -551,15 +551,20 @@
 
   .theme-simple .element-card-title,
   .theme-dark .element-card-title {
-    font-size: clamp(18px, 15cqi, 24px);
+    font-size: clamp(15px, 12cqi, 19px);
     letter-spacing: var(--t-letter-spacing);
-    margin-bottom: clamp(4px, 3cqi, 8px);
+    margin-bottom: clamp(3px, 2cqi, 5px);
+  }
+
+  .theme-simple .element-card-description,
+  .theme-dark .element-card-description {
+    font-size: clamp(10px, 7cqi, 13px);
   }
 
   .theme-simple .element-card-button,
   .theme-dark .element-card-button {
     font-size: clamp(10px, 7cqi, 13px);
-    padding: clamp(4px, 3cqi, 10px) clamp(8px, 8cqi, 20px);
+    padding: clamp(3px, 2cqi, 6px) clamp(6px, 6cqi, 14px);
   }
 }
 
@@ -665,15 +670,20 @@
 
   .theme-simple .tool-card-title,
   .theme-dark .tool-card-title {
-    font-size: clamp(18px, 15cqi, 24px);
+    font-size: clamp(15px, 12cqi, 19px);
     letter-spacing: var(--t-letter-spacing);
-    margin-bottom: clamp(4px, 3cqi, 8px);
+    margin-bottom: clamp(3px, 2cqi, 5px);
+  }
+
+  .theme-simple .tool-card-description,
+  .theme-dark .tool-card-description {
+    font-size: clamp(10px, 7cqi, 13px);
   }
 
   .theme-simple .tool-card-button,
   .theme-dark .tool-card-button {
     font-size: clamp(10px, 7cqi, 13px);
-    padding: clamp(4px, 3cqi, 10px) clamp(8px, 8cqi, 20px);
+    padding: clamp(3px, 2cqi, 6px) clamp(6px, 6cqi, 14px);
   }
 }
 

@@ -2,14 +2,14 @@ export const elements = [
   {
     id: 'payment-element',
     tab: 'PAYMENT',
-    title: 'Payment Element',
+    title: 'The Payment Element',
     description: 'All-in-one payment collection component supporting multiple payment methods',
     route: '/payment-element?implementation=react&mode=default'
   },
   {
     id: 'express-checkout',
     tab: 'EXPRESS',
-    title: 'Express Checkout Element',
+    title: 'The Express Checkout Element',
     description: 'One-click payment with Apple Pay, Google Pay, and Link',
     route: '/express-checkout-element?implementation=react&mode=default'
   },
@@ -37,7 +37,7 @@ export const elements = [
   {
     id: 'card-element',
     tab: 'CARD',
-    title: 'Card Element',
+    title: 'The Card Element',
     description: 'Legacy card payment component for collecting card number, expiry, and CVC',
     route: '/card-element?implementation=react&mode=default'
   },
