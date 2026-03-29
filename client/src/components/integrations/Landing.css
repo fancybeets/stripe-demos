@@ -98,39 +98,6 @@
   text-align: center;
 }
 
-@media (max-width: 799px) {
-  .elements-grid {
-    grid-template-columns: repeat(auto-fit, 140px);
-    gap: 16px;
-    justify-content: center;
-  }
-
-
-  .element-card {
-    container-type: inline-size;
-    width: auto;
-    height: auto;
-    aspect-ratio: 1 / 1;
-    padding: 8px 6px;
-  }
-
-  .element-card-title {
-    font-size: clamp(9px, 6.5cqi, 12px);
-    letter-spacing: 0;
-    margin-bottom: clamp(3px, 2cqi, 6px);
-  }
-
-  .element-card-description {
-    display: none;
-  }
-
-  .element-card-button {
-    font-size: clamp(7px, 4.5cqi, 9px);
-    padding: clamp(2px, 2cqi, 5px) clamp(4px, 5cqi, 10px);
-    border-width: 1px;
-  }
-}
-
 .element-card::before {
   content: '';
   position: absolute;
@@ -194,6 +161,38 @@
   background: var(--t-primary, #ffb000);
   color: var(--t-text-on-primary, #000000);
   text-shadow: none;
+}
+
+@media (max-width: 799px) {
+  .elements-grid {
+    grid-template-columns: repeat(auto-fit, 140px);
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .element-card {
+    container-type: inline-size;
+    width: auto;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    padding: 8px 6px;
+  }
+
+  .element-card-title {
+    font-size: clamp(14px, 11cqi, 18px);
+    letter-spacing: 0;
+    margin-bottom: clamp(3px, 2cqi, 6px);
+  }
+
+  .element-card-description {
+    font-size: clamp(10px, 7cqi, 13px);
+  }
+
+  .element-card-button {
+    font-size: clamp(10px, 7cqi, 13px);
+    padding: clamp(2px, 2cqi, 5px) clamp(4px, 5cqi, 10px);
+    border-width: 1px;
+  }
 }
 
 .network-tools-arrow {

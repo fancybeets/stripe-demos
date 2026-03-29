@@ -93,7 +93,7 @@ const darkAppearance = {
 
 // For use in non-React (vanilla JS) demos
 export const getStripeAppearance = () => {
-  const theme = localStorage.getItem('theme') || 'apocalypse';
+  const theme = localStorage.getItem('theme') || 'simple';
   if (theme === 'simple') return simpleAppearance;
   if (theme === 'dark') return darkAppearance;
   return apocalypseAppearance;

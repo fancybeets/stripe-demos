@@ -1142,13 +1142,13 @@ const DeviceLayout = ({ children }) => {
         {/* Elements dropdown — slides down from top */}
         {!isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && (
           <div className={`mobile-elements-dropdown ${mobileElementsOpen ? 'open' : ''}`}>
-            {['PAYMENT', 'EXPRESS', 'CHECKOUT', 'EMBEDDED', 'CARD', 'PRB', 'TERMINAL', 'TERM-JS', 'CONNECT'].map(tab => (
+            {elements.map(el => (
               <div
-                key={tab}
-                className={`mobile-tab-item ${currentTab === tab ? 'active' : ''}`}
-                onClick={() => { handleTabClick(tab); setMobileElementsOpen(false); }}
+                key={el.tab}
+                className={`mobile-tab-item ${currentTab === el.tab ? 'active' : ''}`}
+                onClick={() => { handleTabClick(el.tab); setMobileElementsOpen(false); }}
               >
-                {tab}
+                {el.title.toUpperCase()}
               </div>
             ))}
           </div>
