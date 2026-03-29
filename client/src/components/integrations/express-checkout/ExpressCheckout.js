@@ -128,7 +128,11 @@ const ExpressCheckoutIntegration = ({ initialParams = {}, activeView = 'demo', o
         )}
       </div>
       {activeView === 'demo' && <ExpressCheckoutDemo implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <ExpressCheckoutCode implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <ExpressCheckoutCode mode={mode} implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <ExpressCheckoutAbout />

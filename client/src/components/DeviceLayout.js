@@ -940,7 +940,7 @@ const DeviceLayout = ({ children }) => {
         {has('mode') && (
           <div className="device-sidebar-section">
             <div className="device-sidebar-title" onClick={() => toggleSection('mode')} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <span>MODE</span>
+              <span>PAYMENT INTENT TIMING</span>
               <span style={{ fontSize: '12px' }}>{collapsedSections.mode ? '▶' : '▼'}</span>
             </div>
             {!collapsedSections.mode && (
@@ -1651,7 +1651,7 @@ const DeviceLayout = ({ children }) => {
                     {has('mode') && (
                       <div className="device-sidebar-section">
                         <div className="device-sidebar-title" onClick={() => toggleSection('mode')} style={{ cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                          <span>MODE</span>
+                          <span>PAYMENT INTENT TIMING</span>
                           <span style={{ fontSize: '12px' }}>{collapsedSections.mode ? '▶' : '▼'}</span>
                         </div>
                         {!collapsedSections.mode && (

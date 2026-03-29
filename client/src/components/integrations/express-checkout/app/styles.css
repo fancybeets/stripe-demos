@@ -1,0 +1,22 @@
+body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+#express-checkout-element {
+  margin-bottom: 16px;
+}
+
+#error-message {
+  color: #df1b41;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+#success-message {
+  color: #30a46c;
+  font-size: 14px;
+  margin-top: 8px;
+}
