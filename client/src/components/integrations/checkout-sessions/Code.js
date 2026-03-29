@@ -1,19 +1,13 @@
 import React from 'react';
-import CheckoutSessionsReactDefault from './react-default/Code';
 import CheckoutSessionsJSDefault from './js-default/Code';
 
 const CheckoutSessionsCode = ({ implementation, mode, paymentOptions }) => {
-  const key = `${implementation}-default`;
-  const components = {
-    'react-default': CheckoutSessionsReactDefault,
-    'javascript-default': CheckoutSessionsJSDefault,
-  };
-
-  const Component = components[key];
+  const isReact = implementation === 'react';
 
   return (
     <div className="view-content">
-      <Component />
+      {isReact && <div className="react-unavailable-notice">React code examples are not available for this demo yet. Showing vanilla JavaScript instead.</div>}
+      <CheckoutSessionsJSDefault />
     </div>
   );
 };

@@ -1,18 +1,13 @@
 import React from 'react';
-import EmbeddedCheckoutReactDefaultCode from './react-default/Code';
 import EmbeddedCheckoutJSDefaultCode from './js-default/Code';
 
 const EmbeddedCheckoutCode = ({ implementation }) => {
-  const components = {
-    'react': EmbeddedCheckoutReactDefaultCode,
-    'javascript': EmbeddedCheckoutJSDefaultCode,
-  };
-
-  const Component = components[implementation] || EmbeddedCheckoutReactDefaultCode;
+  const isReact = implementation === 'react';
 
   return (
     <div className="view-content">
-      <Component />
+      {isReact && <div className="react-unavailable-notice">React code examples are not available for this demo yet. Showing vanilla JavaScript instead.</div>}
+      <EmbeddedCheckoutJSDefaultCode />
     </div>
   );
 };

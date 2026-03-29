@@ -1,19 +1,13 @@
 import React from 'react';
-import PaymentRequestButtonReactDefault from './react-default/Code';
 import PaymentRequestButtonJSDefault from './js-default/Code';
 
 const PaymentRequestButtonCode = ({ implementation, mode, paymentOptions }) => {
-  const key = `${implementation}-default`;
-  const components = {
-    'react-default': PaymentRequestButtonReactDefault,
-    'javascript-default': PaymentRequestButtonJSDefault,
-  };
-
-  const Component = components[key];
+  const isReact = implementation === 'react';
 
   return (
     <div className="view-content">
-      <Component />
+      {isReact && <div className="react-unavailable-notice">React code examples are not available for this demo yet. Showing vanilla JavaScript instead.</div>}
+      <PaymentRequestButtonJSDefault />
     </div>
   );
 };

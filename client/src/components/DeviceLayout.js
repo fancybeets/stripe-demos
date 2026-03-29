@@ -399,6 +399,7 @@ const DeviceLayout = ({ children }) => {
         if (newAdditionalElements) {
           params.set('additionalElements', newAdditionalElements);
         }
+        params.set('view', activeView);
         preserveLogsParam(params);
         navigate(`${route}?${params.toString()}`);
       }
@@ -436,6 +437,7 @@ const DeviceLayout = ({ children }) => {
         if (newAdditionalElements) {
           params.set('additionalElements', newAdditionalElements);
         }
+        params.set('view', activeView);
         preserveLogsParam(params);
         navigate(`${route}?${params.toString()}`);
       }

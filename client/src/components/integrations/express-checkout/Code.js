@@ -1,22 +1,19 @@
 import React from 'react';
-import ExpressCheckoutReactDefault from './react-default/Code';
-import ExpressCheckoutReactDeferred from './react-deferred/Code';
 import ExpressCheckoutJSDefault from './js-default/Code';
 import ExpressCheckoutJSDeferred from './js-deferred/Code';
 
 const ExpressCheckoutCode = ({ implementation, mode, paymentOptions }) => {
-  const key = `${implementation}-${mode}`;
+  const isReact = implementation === 'react';
   const components = {
-    'react-default': ExpressCheckoutReactDefault,
-    'react-deferred': ExpressCheckoutReactDeferred,
     'javascript-default': ExpressCheckoutJSDefault,
     'javascript-deferred': ExpressCheckoutJSDeferred,
   };
 
-  const Component = components[key];
+  const Component = components[`javascript-${mode}`];
 
   return (
     <div className="view-content">
+      {isReact && <div className="react-unavailable-notice">React code examples are not available for this demo yet. Showing vanilla JavaScript instead.</div>}
       <Component />
     </div>
   );
