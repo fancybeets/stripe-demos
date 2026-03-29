@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stripe Elements + Checkout Sessions</title>
+    <script src="https://js.stripe.com/basil/"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Stripe Elements + Checkout Sessions</h1>
+    <form id="checkout-form">
+      <input type="email" id="email" placeholder="Email" required />
+      <div id="payment-element"></div>
+      <div id="payment-message"></div>
+      <button id="submit" type="button">Pay now</button>
+    </form>
+    <script src="frontend.js"></script>
+  </body>
+</html>

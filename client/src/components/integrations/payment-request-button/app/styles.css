@@ -1,0 +1,26 @@
+body {
+  font-family: sans-serif;
+  max-width: 500px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
+
+h1 {
+  margin-bottom: 24px;
+}
+
+#payment-request-button {
+  margin-bottom: 16px;
+}
+
+#error-message {
+  color: #df1b41;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+#success-message {
+  color: #30a652;
+  font-size: 14px;
+  margin-top: 12px;
+}

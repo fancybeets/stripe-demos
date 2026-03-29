@@ -109,7 +109,11 @@ const CheckoutSessionsIntegration = ({ initialParams = {}, activeView = 'demo', 
         )}
       </div>
       {activeView === 'demo' && <CheckoutSessionsDemo implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <CheckoutSessionsCode implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <CheckoutSessionsCode implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <CheckoutSessionsAbout />

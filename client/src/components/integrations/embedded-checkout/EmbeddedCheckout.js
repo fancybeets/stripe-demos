@@ -101,7 +101,11 @@ const EmbeddedCheckoutIntegration = ({ initialParams = {}, activeView = 'demo', 
         )}
       </div>
       {activeView === 'demo' && <EmbeddedCheckoutDemo implementation={implementation} paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <EmbeddedCheckoutCode implementation={implementation} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <EmbeddedCheckoutCode implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <EmbeddedCheckoutAbout />
