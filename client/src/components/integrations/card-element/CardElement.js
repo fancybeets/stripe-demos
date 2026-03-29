@@ -96,7 +96,11 @@ const CardElementIntegration = ({ initialParams = {}, activeView = 'demo', onVie
         )}
       </div>
       {activeView === 'demo' && <CardElementDemo implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <CardElementCode implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <CardElementCode implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <CardElementAbout />

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stripe Terminal (JavaScript SDK)</title>
+    <script src="https://js.stripe.com/terminal/v1/"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Stripe Terminal (JavaScript SDK)</h1>
+
+    <div>
+      <button id="btn-connect">Connect to Simulated Reader</button>
+    </div>
+    <div>
+      <button id="btn-create-pi" disabled>Create Payment Intent ($42.42)</button>
+    </div>
+    <div>
+      <button id="btn-collect" disabled>Collect Payment Method</button>
+      <button id="btn-cancel-collect" disabled>Cancel</button>
+    </div>
+    <div>
+      <button id="btn-process" disabled>Process Payment</button>
+    </div>
+    <div>
+      <button id="btn-capture" disabled>Capture Payment</button>
+    </div>
+    <div>
+      <button id="btn-reset" disabled>Reset</button>
+    </div>
+
+    <div id="log"></div>
+
+    <script src="frontend.js"></script>
+  </body>
+</html>
