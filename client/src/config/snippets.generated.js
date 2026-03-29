@@ -459,24 +459,51 @@ A minimal Express + vanilla JS app that demonstrates Stripe's Payment Element us
     },
   },
   'express-checkout': {
-    'js-default': {
+    'js': {
       html: `<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <title>Stripe Express Checkout Element</title>
     <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h1>Stripe Express Checkout Element</h1>
     <div id="express-checkout-element"></div>
     <div id="error-message"></div>
     <div id="success-message"></div>
-    <script src="checkout.js"></script>
+    <script src="frontend.js"></script>
   </body>
 </html>
 `,
-      frontend: `// Initialize Stripe.js
-const stripe = Stripe('pk_test_...');
+      styles: `body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
 
-let elements;
+#express-checkout-element {
+  margin-bottom: 16px;
+}
+
+#error-message {
+  color: #df1b41;
+  font-size: 14px;
+  margin-top: 8px;
+}
+
+#success-message {
+  color: #30a46c;
+  font-size: 14px;
+  margin-top: 8px;
+}
+`,
+      frontend: `// Make sure to replace this with your own Stripe Sandbox publishable key.
+const PUBLISHABLE_KEY = 'pk_test_...';
+
+const stripe = Stripe(PUBLISHABLE_KEY);
 
 initialize();
 
@@ -484,23 +511,15 @@ async function initialize() {
   const response = await fetch('/create-payment-intent', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'potato' }] }),
+    body: JSON.stringify({ amount: 2000, currency: 'usd' }),
   });
   const { clientSecret } = await response.json();
 
-  const appearance = {
-    theme: 'stripe',
-  };
-  elements = stripe.elements({ appearance, clientSecret });
+  const elements = stripe.elements({ clientSecret });
 
-  const expressCheckoutElement = elements.create('expressCheckout', {
-    buttonType: {
-      applePay: 'buy',
-      googlePay: 'buy',
-    },
-  });
+  const expressCheckoutElement = elements.create('expressCheckout');
 
-  expressCheckoutElement.on('confirm', async (event) => {
+  expressCheckoutElement.on('confirm', async () => {
     const { error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
@@ -510,174 +529,226 @@ async function initialize() {
     });
 
     if (error) {
-      const messageContainer = document.querySelector('#error-message');
-      messageContainer.textContent = error.message;
+      document.querySelector('#error-message').textContent = error.message;
     } else {
-      const messageContainer = document.querySelector('#success-message');
-      messageContainer.textContent = 'Payment successful!';
+      document.querySelector('#success-message').textContent = 'Payment successful!';
     }
   });
 
   expressCheckoutElement.mount('#express-checkout-element');
 }
 `,
-      backend: `const stripe = require('stripe')('sk_test_...');
+      server: `// Make sure to replace this with your own Stripe Sandbox secret key.
+const stripe = require('stripe')('sk_test_...');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
+app.use(express.static('.'));
 
 app.post('/create-payment-intent', async (req, res) => {
-  const { items } = req.body;
-
-  const calculateOrderAmount = (items) => {
-    return 1400;
-  };
-
   try {
+    const { amount = 2000, currency = 'usd' } = req.body;
+
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: calculateOrderAmount(items),
-      currency: 'usd',
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      amount,
+      currency,
+      automatic_payment_methods: { enabled: true },
     });
 
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
-    res.status(400).send({
+    res.status(400).json({
       error: {
-        message: error.message,
+        message: \`\${error.message} - make sure you've replaced sk_test_... in server.js with your secret key from https://dashboard.stripe.com/test/apikeys\`,
       },
     });
   }
 });
 
-app.listen(4242, () => console.log('Server running on port ' + (4242)));
+app.listen(4242, () => console.log('Server running on port 4242'));
+`,
+      packageJson: `{
+  "name": "express-checkout-element-js",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "stripe": "^17.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
+`,
+      readme: `# Stripe Express Checkout Element Demo
+
+A minimal Express + vanilla JS app that demonstrates Stripe's Express Checkout Element.
+
+## Setup
+
+1. Ensure you have a [Node.js installation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Download the project, unzip it, and \`cd\` into the project folder.
+3. Open the project in your text editor of choice (e.g. \`code .\`, \`cursor .\`)
+4. Create or log into your Stripe sandbox account, then get your API keys from [dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys).
+5. Replace \`sk_test_...\` in \`server.js\` with your Sandbox secret key.
+6. Replace \`pk_test_...\` in \`frontend.js\` with your Sandbox publishable key.
+7. Install dependencies and start the server: \`npm install && npm start\`
+8. Open [http://localhost:4242](http://localhost:4242) in a browser.
 `,
     },
     'js-deferred': {
       html: `<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <title>Stripe Express Checkout Element (Deferred)</title>
     <script src="https://js.stripe.com/v3/"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
+    <h1>Stripe Express Checkout Element</h1>
     <div id="express-checkout-element"></div>
     <div id="error-message"></div>
     <div id="success-message"></div>
-    <script src="checkout.js"></script>
+    <script src="frontend.js"></script>
   </body>
 </html>
 `,
-      frontend: `// Initialize Stripe.js
-const stripe = Stripe('pk_test_...');
+      styles: `body {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 60px auto;
+  padding: 0 20px;
+}
 
-let elements;
+#express-checkout-element {
+  margin-bottom: 16px;
+}
 
-initialize();
+#error-message {
+  color: #df1b41;
+  font-size: 14px;
+  margin-top: 8px;
+}
 
-async function initialize() {
-  const appearance = {
-    theme: 'stripe',
-  };
-
-  // Initialize with mode: 'payment'
-  elements = stripe.elements({
-    mode: 'payment',
-    amount: 1400,
-    currency: 'usd',
-    appearance
-  });
-
-  const expressCheckoutElement = elements.create('expressCheckout', {
-    buttonType: {
-      applePay: 'buy',
-      googlePay: 'buy',
-    },
-  });
-
-  expressCheckoutElement.on('confirm', async (event) => {
-    try {
-      // Submit form to validate fields
-      const { error: submitError } = await elements.submit();
-      if (submitError) {
-        const messageContainer = document.querySelector('#error-message');
-        messageContainer.textContent = submitError.message;
-        return;
-      }
-
-      // Create PaymentIntent on confirm
-      const response = await fetch('/create-payment-intent', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          amount: 1400,
-          currency: 'usd'
-        }),
-      });
-
-      const { clientSecret } = await response.json();
-
-      // Confirm payment with clientSecret
-      const { error } = await stripe.confirmPayment({
-        elements,
-        clientSecret,
-        confirmParams: {
-          return_url: window.location.origin + '/completion',
-        },
-        redirect: 'if_required',
-      });
-
-      if (error) {
-        const messageContainer = document.querySelector('#error-message');
-        messageContainer.textContent = error.message;
-      } else {
-        const messageContainer = document.querySelector('#success-message');
-        messageContainer.textContent = 'Payment successful!';
-      }
-    } catch (err) {
-      const messageContainer = document.querySelector('#error-message');
-      messageContainer.textContent = err.message;
-    }
-  });
-
-  expressCheckoutElement.mount('#express-checkout-element');
+#success-message {
+  color: #30a46c;
+  font-size: 14px;
+  margin-top: 8px;
 }
 `,
-      backend: `const stripe = require('stripe')('sk_test_...');
+      frontend: `// Make sure to replace this with your own Stripe Sandbox publishable key.
+const PUBLISHABLE_KEY = 'pk_test_...';
+
+const stripe = Stripe(PUBLISHABLE_KEY);
+
+const amount = 2000;
+const currency = 'usd';
+
+// Initialize Elements with mode/amount/currency — no clientSecret upfront.
+const elements = stripe.elements({ mode: 'payment', amount, currency });
+
+const expressCheckoutElement = elements.create('expressCheckout');
+
+expressCheckoutElement.on('confirm', async () => {
+  // Validate fields before creating the PaymentIntent.
+  const { error: submitError } = await elements.submit();
+  if (submitError) {
+    document.querySelector('#error-message').textContent = submitError.message;
+    return;
+  }
+
+  // Create the PaymentIntent on the server.
+  const response = await fetch('/create-payment-intent', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ amount, currency }),
+  });
+  const { clientSecret } = await response.json();
+
+  // Confirm the payment using the clientSecret from the server.
+  const { error } = await stripe.confirmPayment({
+    elements,
+    clientSecret,
+    confirmParams: {
+      return_url: window.location.origin + '/completion',
+    },
+    redirect: 'if_required',
+  });
+
+  if (error) {
+    document.querySelector('#error-message').textContent = error.message;
+  } else {
+    document.querySelector('#success-message').textContent = 'Payment successful!';
+  }
+});
+
+expressCheckoutElement.mount('#express-checkout-element');
+`,
+      server: `// Make sure to replace this with your own Stripe Sandbox secret key.
+const stripe = require('stripe')('sk_test_...');
 const express = require('express');
 const app = express();
 
 app.use(express.json());
+app.use(express.static('.'));
 
 app.post('/create-payment-intent', async (req, res) => {
-  const { amount, currency } = req.body;
-
   try {
+    const { amount = 2000, currency = 'usd' } = req.body;
+
     const paymentIntent = await stripe.paymentIntents.create({
       amount,
       currency,
-      automatic_payment_methods: {
-        enabled: true,
-      },
+      automatic_payment_methods: { enabled: true },
     });
 
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
+    res.json({ clientSecret: paymentIntent.client_secret });
   } catch (error) {
-    res.status(400).send({
+    res.status(400).json({
       error: {
-        message: error.message,
+        message: \`\${error.message} - make sure you've replaced sk_test_... in server.js with your secret key from https://dashboard.stripe.com/test/apikeys\`,
       },
     });
   }
 });
 
-app.listen(4242, () => console.log('Server running on port ' + (4242)));
+app.listen(4242, () => console.log('Server running on port 4242'));
+`,
+      packageJson: `{
+  "name": "express-checkout-element-deferred-js",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "stripe": "^17.7.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
+  }
+}
+`,
+      readme: `# Stripe Express Checkout Element Demo (Deferred)
+
+A minimal Express + vanilla JS app that demonstrates Stripe's Express Checkout Element using deferred PaymentIntent creation. The PaymentIntent is created on the server at confirmation time rather than on page load.
+
+## Setup
+
+1. Ensure you have a [Node.js installation](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+2. Download the project, unzip it, and \`cd\` into the project folder.
+3. Open the project in your text editor of choice (e.g. \`code .\`, \`cursor .\`)
+4. Create or log into your Stripe sandbox account, then get your API keys from [dashboard.stripe.com/test/apikeys](https://dashboard.stripe.com/test/apikeys).
+5. Replace \`sk_test_...\` in \`server.js\` with your Sandbox secret key.
+6. Replace \`pk_test_...\` in \`frontend.js\` with your Sandbox publishable key.
+7. Install dependencies and start the server: \`npm install && npm start\`
+8. Open [http://localhost:4242](http://localhost:4242) in a browser.
 `,
     },
   },

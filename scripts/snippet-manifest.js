@@ -13,8 +13,14 @@ module.exports = {
     },
   },
   'express-checkout': {
-    'js-default': ['index.html', 'frontend.js', 'backend.js'],
-    'js-deferred': ['index.html', 'frontend.js', 'backend.js'],
+    'js': {
+      dir: 'client/src/components/integrations/express-checkout/app',
+      files: ['index.html', 'styles.css', 'frontend.js', 'server.js', 'package.json', 'README.md'],
+    },
+    'js-deferred': {
+      dir: 'client/src/components/integrations/express-checkout/app-deferred',
+      files: ['index.html', 'styles.css', 'frontend.js', 'server.js', 'package.json', 'README.md'],
+    },
   },
   'checkout-sessions': {
     'js-default': ['index.html', 'frontend.js', 'backend.js'],
