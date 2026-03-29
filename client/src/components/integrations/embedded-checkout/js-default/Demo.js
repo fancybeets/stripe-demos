@@ -4,7 +4,7 @@ import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
 const EmbeddedCheckoutJSDefaultDemo = ({ paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
   const [error, setError] = useState(null);
   const [loaded, setLoaded] = useState(false);
   const containerRef = useRef(null);
@@ -28,6 +28,7 @@ const EmbeddedCheckoutJSDefaultDemo = ({ paymentOptions = {} }) => {
           amount: parseInt(amount),
           currency,
           country,
+          quantity: parseInt(quantity) || 1,
           paymentMethods: paymentMethods === 'auto' ? null : paymentMethods.split(','),
           currentQueryString: window.location.search,
           theme: localStorage.getItem('theme') || 'simple',
@@ -63,7 +64,7 @@ const EmbeddedCheckoutJSDefaultDemo = ({ paymentOptions = {} }) => {
         checkoutRef.current = null;
       }
     };
-  }, [amount, currency, country, paymentMethods]);
+  }, [amount, currency, country, paymentMethods, quantity]);
 
   if (error) {
     return (
