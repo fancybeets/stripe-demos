@@ -21,7 +21,25 @@ export const AVAILABLE_ADDITIONAL_ELEMENTS = {
       elementOptions: { mode: 'billing' }
     }
   ],
-  // Future expansion: add 'EXPRESS', 'CHECKOUT', etc.
+  'CHECKOUT': [
+    {
+      id: 'express',
+      name: 'Express Checkout',
+      elementType: 'expressCheckout'
+    },
+    {
+      id: 'shipping',
+      name: 'Shipping Address',
+      elementType: 'address',
+      elementOptions: { mode: 'shipping' }
+    },
+    {
+      id: 'billing',
+      name: 'Billing Address',
+      elementType: 'address',
+      elementOptions: { mode: 'billing' }
+    }
+  ],
 };
 
 export const getAvailableAdditionalElements = (pageId) => {

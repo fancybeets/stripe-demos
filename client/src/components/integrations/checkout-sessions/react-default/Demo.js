@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
-import { CheckoutProvider, PaymentElement, useCheckout } from '@stripe/react-stripe-js/checkout';
+import { CheckoutProvider, PaymentElement, ExpressCheckoutElement, ShippingAddressElement, BillingAddressElement, useCheckout } from '@stripe/react-stripe-js/checkout';
 import { useStripeAppearance } from '../../../../hooks/useStripeAppearance';
 import { formatCurrency } from '../../../../utils/formatCurrency';
 import { logCheckoutCreation, checkoutUpdateEmail, checkoutConfirm } from '../../../../utils/stripeLogger';
 import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
-const CheckoutForm = ({ amount, currency, quantity = '1' }) => {
+const CheckoutForm = ({ amount, currency, quantity = '1', additionalElementsArray = [] }) => {
   const checkoutState = useCheckout();
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
@@ -52,10 +52,14 @@ const CheckoutForm = ({ amount, currency, quantity = '1' }) => {
     setIsLoading(false);
   };
 
+  const hasAdditionalElements = additionalElementsArray.length > 0;
+
   return (
     <form onSubmit={handleSubmit}>
+      <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+        Email
+      </h3>
       <div className="stripe-element-container">
-        <label className="stripe-element-label">Email</label>
         <input
           type="email"
           value={email}
@@ -65,8 +69,54 @@ const CheckoutForm = ({ amount, currency, quantity = '1' }) => {
           className="email-input"
         />
       </div>
+      {additionalElementsArray.includes('express') && (
+        <>
+          <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+            Express checkout for {formatCurrency(String(parseInt(amount) * (parseInt(quantity) || 1)), currency)}
+          </h3>
+          <div className="stripe-element-container">
+            <div className="stripe-element-wrapper">
+              <ExpressCheckoutElement />
+            </div>
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', margin: '20px 0', gap: '10px' }}>
+            <div style={{ flex: 1, borderTop: '1px solid #e0e0e0' }}></div>
+            <span style={{ color: '#6b7280', fontSize: '14px', whiteSpace: 'nowrap' }}>or use the form below</span>
+            <div style={{ flex: 1, borderTop: '1px solid #e0e0e0' }}></div>
+          </div>
+        </>
+      )}
+      {additionalElementsArray.includes('shipping') && (
+        <>
+          <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+            Shipping Address
+          </h3>
+          <div className="stripe-element-container">
+            <div className="stripe-element-wrapper">
+              <ShippingAddressElement />
+            </div>
+          </div>
+        </>
+      )}
+      {additionalElementsArray.includes('billing') && (
+        <>
+          <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+            Billing Address
+          </h3>
+          <div className="stripe-element-container">
+            <div className="stripe-element-wrapper">
+              <BillingAddressElement />
+            </div>
+          </div>
+        </>
+      )}
+      {hasAdditionalElements && (
+        <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+          Payment Method
+        </h3>
+      )}
       <div className="stripe-element-container">
-        <label className="stripe-element-label">Payment Details</label>
+        {!hasAdditionalElements && <label className="stripe-element-label">Payment Details</label>}
         <div className="stripe-element-wrapper">
           <PaymentElement onReady={() => setIsReady(true)} options={{ layout: 'tabs' }} />
         </div>
@@ -80,7 +130,8 @@ const CheckoutForm = ({ amount, currency, quantity = '1' }) => {
 };
 
 const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1', additionalElements = '' } = paymentOptions;
+  const additionalElementsArray = additionalElements ? additionalElements.split(',').filter(e => e) : [];
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
   const [error, setError] = useState(null);
@@ -165,7 +216,7 @@ const CheckoutSessionsReactDefaultDemo = ({ implementation, mode, paymentOptions
         }
       }}
     >
-      <CheckoutForm amount={amount} currency={currency} quantity={quantity} />
+      <CheckoutForm amount={amount} currency={currency} quantity={quantity} additionalElementsArray={additionalElementsArray} />
     </CheckoutProvider>
   );
 };
