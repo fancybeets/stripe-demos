@@ -123,6 +123,6 @@ const CheckoutSessionsIntegration = ({ initialParams = {}, activeView = 'demo', 
   );
 };
 
-CheckoutSessionsIntegration.sidebarOptions = ['implementation', 'country', 'currency', 'amount', 'quantity', 'paymentMethods'];
+CheckoutSessionsIntegration.sidebarOptions = ['implementation', 'country', 'currency', 'amount', 'quantity', 'paymentMethods', 'additionalElements'];
 
 export default CheckoutSessionsIntegration;

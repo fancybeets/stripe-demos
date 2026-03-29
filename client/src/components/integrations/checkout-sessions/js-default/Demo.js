@@ -7,7 +7,8 @@ import '../../Integration.css';
 import API_BASE_URL from '../../../../config/api';
 
 const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = {} }) => {
-  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1' } = paymentOptions;
+  const { country = 'US', currency = 'usd', amount = '4242', paymentMethods = 'auto', quantity = '1', additionalElements = '' } = paymentOptions;
+  const additionalElementsArray = additionalElements ? additionalElements.split(',').filter(e => e) : [];
   const [stripePromise, setStripePromise] = useState(null);
   const [clientSecret, setClientSecret] = useState('');
   const [error, setError] = useState(null);
@@ -91,6 +92,23 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
       });
 
       checkoutRef.current = checkout;
+
+      // Mount optional express checkout element
+      if (additionalElementsArray.includes('express')) {
+        const expressElement = checkout.createExpressCheckoutElement();
+        expressElement.mount('#express-element-js-checkout');
+      }
+
+      // Mount optional address elements
+      if (additionalElementsArray.includes('shipping')) {
+        const shippingElement = checkout.createShippingAddressElement();
+        shippingElement.mount('#shipping-element-js-checkout');
+      }
+
+      if (additionalElementsArray.includes('billing')) {
+        const billingElement = checkout.createBillingAddressElement();
+        billingElement.mount('#billing-element-js-checkout');
+      }
 
       // Mount the payment element
       const paymentElement = checkout.createPaymentElement({ layout: 'tabs' });
@@ -202,8 +220,27 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
         </div>
       ) : stripePromise && clientSecret ? (
         <form id="checkout-form-js-default">
+          {additionalElementsArray.includes('express') && (
+            <>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+                Express checkout for {formatCurrency(String(parseInt(amount) * (parseInt(quantity) || 1)), currency)}
+              </h3>
+              <div className="stripe-element-container">
+                <div className="stripe-element-wrapper">
+                  <div id="express-element-js-checkout"></div>
+                </div>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', margin: '20px 0', gap: '10px' }}>
+                <div style={{ flex: 1, borderTop: '1px solid #e0e0e0' }}></div>
+                <span style={{ color: '#6b7280', fontSize: '14px', whiteSpace: 'nowrap' }}>or use the form below</span>
+                <div style={{ flex: 1, borderTop: '1px solid #e0e0e0' }}></div>
+              </div>
+            </>
+          )}
+          <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+            Email
+          </h3>
           <div className="stripe-element-container">
-            <label className="stripe-element-label">Email</label>
             <input
               id="email-input-js-checkout"
               type="email"
@@ -212,8 +249,37 @@ const CheckoutSessionsJSDefaultDemo = ({ implementation, mode, paymentOptions = 
               className="email-input"
             />
           </div>
+          {additionalElementsArray.includes('shipping') && (
+            <>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+                Shipping Address
+              </h3>
+              <div className="stripe-element-container">
+                <div className="stripe-element-wrapper">
+                  <div id="shipping-element-js-checkout"></div>
+                </div>
+              </div>
+            </>
+          )}
+          {additionalElementsArray.includes('billing') && (
+            <>
+              <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+                Billing Address
+              </h3>
+              <div className="stripe-element-container">
+                <div className="stripe-element-wrapper">
+                  <div id="billing-element-js-checkout"></div>
+                </div>
+              </div>
+            </>
+          )}
+          {additionalElementsArray.length > 0 && (
+            <h3 style={{ fontSize: '18px', fontWeight: '600', marginBottom: '0', marginTop: '20px' }}>
+              Payment Method
+            </h3>
+          )}
           <div className="stripe-element-container">
-            <label className="stripe-element-label">Payment Details</label>
+            {additionalElementsArray.length === 0 && <label className="stripe-element-label">Payment Details</label>}
             <div className="stripe-element-wrapper">
               <div id="payment-element-js-checkout"></div>
             </div>
