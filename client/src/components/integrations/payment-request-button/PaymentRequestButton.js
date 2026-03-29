@@ -89,7 +89,11 @@ const PaymentRequestButtonIntegration = ({ initialParams = {}, activeView = 'dem
         )}
       </div>
       {activeView === 'demo' && <PaymentRequestButtonDemo implementation={implementation} mode="default" paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <PaymentRequestButtonCode implementation={implementation} mode="default" paymentOptions={paymentOptions} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <PaymentRequestButtonCode implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <PaymentRequestButtonAbout />
