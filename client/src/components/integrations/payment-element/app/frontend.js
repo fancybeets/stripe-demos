@@ -1,26 +1,23 @@
-// Initialize Stripe.js
-const stripe = Stripe(window._STRIPE_PK || 'pk_test_...');
+// Make sure to replace this with your own Stripe Sandbox publishable key.
+const PUBLISHABLE_KEY = 'pk_test_...';
+
+const stripe = Stripe(PUBLISHABLE_KEY);
 
 let elements;
 
 initialize();
 
-document
-  .querySelector('#payment-form')
-  .addEventListener('submit', handleSubmit);
+document.querySelector('#payment-form').addEventListener('submit', handleSubmit);
 
 async function initialize() {
   const response = await fetch('/create-payment-intent', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ items: [{ id: 'potato' }] }),
+    body: JSON.stringify({ amount: 2000, currency: 'usd' }),
   });
   const { clientSecret } = await response.json();
 
-  const appearance = {
-    theme: 'stripe',
-  };
-  elements = stripe.elements({ appearance, clientSecret });
+  elements = stripe.elements({ clientSecret });
 
   const paymentElement = elements.create('payment');
   paymentElement.mount('#payment-element');
@@ -40,6 +37,7 @@ async function handleSubmit(e) {
   if (error) {
     const messageContainer = document.querySelector('#payment-message');
     messageContainer.textContent = error.message;
+    messageContainer.style.display = '';
   }
 
   setLoading(false);

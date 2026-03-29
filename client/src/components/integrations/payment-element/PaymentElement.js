@@ -128,7 +128,11 @@ const PaymentElementIntegration = ({ initialParams = {}, activeView = 'demo', on
         )}
       </div>
       {activeView === 'demo' && <PaymentElementDemo implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
-      {activeView === 'code' && <PaymentElementCode implementation={implementation} mode={mode} paymentOptions={paymentOptions} />}
+      {activeView === 'code' && (
+        <div className="view-content">
+          <PaymentElementCode mode={mode} implementation={implementation} />
+        </div>
+      )}
       {activeView === 'about' && (
         <div className="view-content">
           <PaymentElementAbout />
