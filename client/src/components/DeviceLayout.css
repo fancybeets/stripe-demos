@@ -1676,6 +1676,47 @@
   box-shadow: var(--t-glow-shadow, 0 0 10px rgba(255, 176, 0, 0.5));
 }
 
+/* Sub-page back button (StripeReachability, EceClickTiming) — same look as device-back-button */
+.sub-page-back-btn {
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  background: #1a1a1a;
+  border: 2px solid var(--t-primary, #ffb000);
+  color: var(--t-primary, #ffb000);
+  font-family: 'Courier New', monospace;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  text-shadow: var(--t-text-shadow, 0 0 5px #ffb000);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.sub-page-back-btn:hover {
+  background: #2a2a2a;
+  box-shadow: var(--t-glow-shadow, 0 0 10px rgba(255, 176, 0, 0.5));
+}
+
+@media (max-width: 799px) {
+  .theme-simple .sub-page-back-btn,
+  .theme-dark .sub-page-back-btn {
+    top: 50%;
+    transform: translateY(-50%);
+    left: 12px;
+    width: auto;
+    height: 34px;
+    border-radius: 3px;
+    padding: 0 10px;
+    font-size: 17px;
+  }
+}
+
 .device-maximize-button {
   position: absolute;
   right: 20px;

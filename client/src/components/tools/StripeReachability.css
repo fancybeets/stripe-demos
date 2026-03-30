@@ -93,6 +93,10 @@
     padding: 0 20px;
   }
 
+  .reachability-subtitle-row {
+    margin-bottom: 0;
+  }
+
   .theme-simple .stripe-reachability-subtitle,
   .theme-dark .stripe-reachability-subtitle {
     font-size: 11px;
@@ -100,13 +104,7 @@
 
   .theme-simple .stripe-reachability-body,
   .theme-dark .stripe-reachability-body {
-    margin-top: 32px;
-  }
-
-  .theme-simple .tools-nav-btn,
-  .theme-dark .tools-nav-btn {
-    top: calc(50% + 32px);
-    left: 24px;
+    margin-top: 0;
   }
 }
 

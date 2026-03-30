@@ -146,21 +146,14 @@ const StripeReachability = ({ onNavigate }) => {
   return (
     <div className="stripe-reachability-content">
       <div className="stripe-reachability-header">
+        {theme !== 'apocalypse' && (
+          <button className="sub-page-back-btn" onClick={handleBackClick} title="Back to Tools">←</button>
+        )}
         <div className="stripe-reachability-title">Terminal Reachability</div>
       </div>
 
       <div className="reachability-subtitle-area">
         <div className="reachability-subtitle-row">
-          {theme !== 'apocalypse' && (
-            <button
-              className="tools-nav-btn"
-              onClick={handleBackClick}
-              title="Back to Tools"
-            >
-              <span className="tools-nav-arrow">←</span>
-              <span className="tools-nav-label">BACK</span>
-            </button>
-          )}
           <div className="stripe-reachability-subtitle">
             EXPERIMENTAL - use and trust with caution
           </div>
@@ -174,7 +167,7 @@ const StripeReachability = ({ onNavigate }) => {
             onClick={runTests}
             disabled={testing}
           >
-            {testing ? 'TESTING...' : 'RUN DOMAIN TEST'}
+            {testing ? 'TESTING...' : 'RUN REACHABILITY TEST'}
           </button>
         </div>
 

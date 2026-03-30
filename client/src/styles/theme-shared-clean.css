@@ -877,3 +877,233 @@
   border: 1px solid var(--t-error-border);
   letter-spacing: var(--t-letter-spacing);
 }
+
+/* Misc page - shared */
+.theme-simple .misc-content,
+.theme-dark .misc-content {
+  padding: 0 0 40px 0;
+}
+
+.theme-simple .misc-header,
+.theme-dark .misc-header {
+  margin-bottom: 0;
+}
+
+.theme-simple .misc-subtitle,
+.theme-dark .misc-subtitle {
+  padding: 10px 30px;
+  text-transform: none;
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+}
+
+.theme-simple .misc-grid,
+.theme-dark .misc-grid {
+  padding-left: 30px;
+  padding-right: 30px;
+  grid-template-columns: repeat(4, 160px);
+  gap: 16px;
+  justify-content: center;
+}
+
+.theme-simple .misc-card::before,
+.theme-dark .misc-card::before {
+  display: none;
+}
+
+.theme-simple .misc-card,
+.theme-dark .misc-card {
+  border: none;
+  width: 160px;
+  height: 160px;
+}
+
+.theme-simple .misc-card:hover,
+.theme-dark .misc-card:hover {
+  border: none;
+}
+
+.theme-simple .misc-card-title,
+.theme-dark .misc-card-title {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  font-size: 15px;
+}
+
+.theme-simple .misc-card-description,
+.theme-dark .misc-card-description {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+  font-size: 11px;
+}
+
+@media (max-width: 799px) {
+  .theme-simple .misc-content,
+  .theme-dark .misc-content {
+    padding: 0 0 40px 0;
+  }
+
+  .theme-simple .misc-grid,
+  .theme-dark .misc-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+    padding: 0 16px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .theme-simple .misc-card,
+  .theme-dark .misc-card {
+    container-type: inline-size;
+    flex: 0 0 155px;
+    width: 155px;
+    height: 155px;
+    aspect-ratio: 1 / 1;
+    padding: 20px 10px;
+  }
+
+  .theme-simple .misc-card-title,
+  .theme-dark .misc-card-title {
+    font-size: clamp(15px, 12cqi, 19px);
+    letter-spacing: var(--t-letter-spacing);
+    margin-bottom: clamp(3px, 2cqi, 5px);
+  }
+
+  .theme-simple .misc-card-description,
+  .theme-dark .misc-card-description {
+    font-size: clamp(10px, 7cqi, 13px);
+  }
+}
+
+/* ECE Click Timing page - shared */
+.theme-simple .ece-timing-content,
+.theme-dark .ece-timing-content {
+  padding: 0 0 40px 0;
+}
+
+.theme-simple .ece-timing-header,
+.theme-dark .ece-timing-header {
+  margin-bottom: 0;
+}
+
+.theme-simple .ece-timing-subtitle,
+.theme-dark .ece-timing-subtitle {
+  color: var(--t-text-secondary);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  opacity: 1;
+  padding: 24px 30px;
+}
+
+.theme-simple .ece-section::before,
+.theme-dark .ece-section::before {
+  display: none;
+}
+
+.theme-simple .ece-section,
+.theme-dark .ece-section {
+  border-color: var(--t-border-subtle);
+  box-shadow: none;
+  background: var(--t-bg-raised);
+  padding: 20px;
+}
+
+@media (max-width: 799px) {
+  .theme-simple .ece-timing-body,
+  .theme-dark .ece-timing-body {
+    margin-top: 0;
+  }
+
+  .theme-simple .ece-timing-subtitle,
+  .theme-dark .ece-timing-subtitle {
+    margin-bottom: 0;
+  }
+
+  .theme-simple .ece-section,
+  .theme-dark .ece-section {
+    padding: 16px;
+  }
+}
+
+.theme-simple .ece-section-header,
+.theme-dark .ece-section-header {
+  color: var(--t-text-body);
+  letter-spacing: var(--t-letter-spacing);
+  font-family: var(--t-font-family);
+  text-transform: none;
+  text-shadow: none;
+}
+
+.theme-simple .ece-countdown-text,
+.theme-dark .ece-countdown-text {
+  color: var(--t-primary);
+  font-family: var(--t-font-family);
+  text-shadow: none;
+}
+
+.theme-simple .ece-countdown-circle-bg,
+.theme-dark .ece-countdown-circle-bg {
+  stroke: var(--t-border-subtle);
+}
+
+.theme-simple .ece-code-block,
+.theme-dark .ece-code-block {
+  background: var(--t-code-bg);
+  border-color: var(--t-code-border);
+  color: var(--t-text-body);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.theme-simple .ece-timing-link,
+.theme-dark .ece-timing-link {
+  color: var(--t-primary);
+  font-family: var(--t-font-family);
+}
+
+.theme-simple .ece-timing-link:hover,
+.theme-dark .ece-timing-link:hover {
+  color: var(--t-primary-hover);
+}
+
+/* ============================================================
+   MOBILE BANNER HEIGHTS — match mobile-header (55px)
+   ============================================================ */
+
+@media (max-width: 799px) {
+  .theme-simple .landing-title,
+  .theme-dark .landing-title,
+  .theme-simple .network-tools-title,
+  .theme-dark .network-tools-title,
+  .theme-simple .misc-title,
+  .theme-dark .misc-title,
+  .theme-simple .stripe-reachability-title,
+  .theme-dark .stripe-reachability-title,
+  .theme-simple .ece-timing-title,
+  .theme-dark .ece-timing-title {
+    min-height: 55px;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+  .theme-simple .stripe-reachability-title,
+  .theme-dark .stripe-reachability-title {
+    font-size: 18px;
+    letter-spacing: normal;
+  }
+
+  .theme-simple .ece-timing-title,
+  .theme-dark .ece-timing-title {
+    font-size: 15px;
+    letter-spacing: normal;
+  }
+}

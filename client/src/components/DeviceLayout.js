@@ -106,6 +106,8 @@ const DeviceLayout = ({ children }) => {
                      location.pathname === '/connect-embedded' ? 'CONNECT' :
                      location.pathname === '/tools' ? 'TOOLS' :
                      location.pathname.startsWith('/tools/') ? 'TOOL' :
+                     location.pathname === '/misc' ? 'MISC' :
+                     location.pathname.startsWith('/misc/') ? 'MISC-TOOL' :
                      location.pathname === '/about' ? 'ABOUT' :
                      location.pathname === '/settings' ? 'SETTINGS' :
                      location.pathname === '/' ? 'HOME' : null;
@@ -806,7 +808,9 @@ const DeviceLayout = ({ children }) => {
   const isSettingsPage = currentTab === 'SETTINGS';
   const isNetworkToolsPage = currentTab === 'TOOLS';
   const isNetworkToolPage = currentTab === 'TOOL';
-  const sidebarContent = !isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage ? (
+  const isMiscPage = currentTab === 'MISC';
+  const isMiscToolPage = currentTab === 'MISC-TOOL';
+  const sidebarContent = !isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage ? (
     showCountrySelector ? (
       <div className="device-sidebar-section device-sidebar-section-full">
         <div className="device-sidebar-header">
@@ -1127,7 +1131,7 @@ const DeviceLayout = ({ children }) => {
         )}
 
         {/* Options drawer — slides in from left */}
-        {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && (
+        {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && (
           <div className={`mobile-options-drawer ${mobileOptionsOpen ? 'open' : ''}`}>
             <div className="mobile-options-header">
               <span>OPTIONS</span>
@@ -1140,7 +1144,7 @@ const DeviceLayout = ({ children }) => {
         )}
 
         {/* Elements dropdown — slides down from top */}
-        {!isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && (
+        {!isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && (
           <div className={`mobile-elements-dropdown ${mobileElementsOpen ? 'open' : ''}`}>
             {elements.map(el => (
               <div
@@ -1156,7 +1160,7 @@ const DeviceLayout = ({ children }) => {
 
         {/* Main screen */}
         <div className="mobile-screen">
-          {!isHomePage && currentTab !== 'TOOLS' && currentTab !== 'TOOL' && (
+          {!isHomePage && currentTab !== 'TOOLS' && currentTab !== 'TOOL' && currentTab !== 'MISC' && currentTab !== 'MISC-TOOL' && (
             <div className="mobile-header">
               <div className="mobile-header-left">
                 <button className="mobile-back-btn" onClick={() => handleTabClick('HOME')}>←</button>
@@ -1188,8 +1192,8 @@ const DeviceLayout = ({ children }) => {
             </div>
           )}
 
-          <div className={`mobile-main ${isHomePage || isAboutPage || isSettingsPage || isNetworkToolsPage || isNetworkToolPage ? 'mobile-main-full' : ''} ${isFading ? 'device-content-fading' : ''}`}>
-            {hasPendingChanges && !isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && activeView === 'demo' && (
+          <div className={`mobile-main ${isHomePage || isAboutPage || isSettingsPage || isNetworkToolsPage || isNetworkToolPage || isMiscPage || isMiscToolPage ? 'mobile-main-full' : ''} ${isFading ? 'device-content-fading' : ''}`}>
+            {hasPendingChanges && !isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && activeView === 'demo' && (
               <div className="device-pending-overlay" onClick={applyPendingChanges}>
                 <div className="device-pending-message">PENDING CHANGES - CLICK TO REFRESH</div>
               </div>
@@ -1197,7 +1201,7 @@ const DeviceLayout = ({ children }) => {
             {clonedChildren}
           </div>
 
-          {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && (
+          {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && (
             <div className="mobile-footer">
               <div className="device-indicators">
                 <div className={`device-view-indicator ${activeView === 'demo' ? 'active' : ''}`} onClick={() => handleViewChange('demo')}>
@@ -1450,7 +1454,7 @@ const DeviceLayout = ({ children }) => {
           </div>
 
           <div className="device-screen" ref={screenRef}>
-          {!isHomePage && !isNetworkToolsPage && !isNetworkToolPage && (
+          {!isHomePage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && (
             <div className="device-header" ref={headerRef}>
               <div className="device-back-button" onClick={() => handleTabClick('HOME')}>
                 ←
@@ -1508,8 +1512,8 @@ const DeviceLayout = ({ children }) => {
             </div>
           )}
 
-          <div className={`device-content ${isHomePage || isAboutPage || isSettingsPage || isNetworkToolsPage || isNetworkToolPage ? 'device-content-full' : ''} ${isFading ? 'device-content-fading' : ''}`}>
-            {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && (
+          <div className={`device-content ${isHomePage || isAboutPage || isSettingsPage || isNetworkToolsPage || isNetworkToolPage || isMiscPage || isMiscToolPage ? 'device-content-full' : ''} ${isFading ? 'device-content-fading' : ''}`}>
+            {!isHomePage && !isAboutPage && !isSettingsPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && (
               <div className={`device-sidebar${sidebarCollapsed ? ' device-sidebar--collapsed' : ''}`}>
                 <div className="device-sidebar-scroll">
                 {showCountrySelector ? (
@@ -1836,7 +1840,7 @@ const DeviceLayout = ({ children }) => {
             )}
 
             <div className="device-main">
-              {hasPendingChanges && !isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && activeView === 'demo' && (
+              {hasPendingChanges && !isHomePage && !isAboutPage && !isNetworkToolsPage && !isNetworkToolPage && !isMiscPage && !isMiscToolPage && activeView === 'demo' && (
                 <div className="device-pending-overlay" onClick={applyPendingChanges}>
                   <div className="device-pending-message">
                     PENDING CHANGES - CLICK TO REFRESH

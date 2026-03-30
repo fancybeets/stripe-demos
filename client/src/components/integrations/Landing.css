@@ -195,6 +195,52 @@
   }
 }
 
+.misc-landing-arrow {
+  position: fixed;
+  left: calc((100vw - 980px) / 2 + 80px);
+  top: 47%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--t-primary, #ffb000);
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  gap: 1px;
+  z-index: 150;
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.12s ease-out;
+}
+
+.misc-landing-arrow.screen-falling {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.misc-landing-arrow:hover {
+  color: var(--t-primary-hover, #ffd700);
+}
+
+.misc-landing-arrow:hover .arrow-symbol {
+  text-shadow: var(--t-text-shadow, 0 0 10px #ffd700);
+}
+
+.misc-landing-arrow:hover .arrow-label {
+  text-shadow: var(--t-text-shadow, 0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+@media (max-width: 799px) {
+  .misc-landing-arrow {
+    padding: 4px 6px;
+    left: 0;
+    gap: 1px;
+  }
+}
+
 .network-tools-arrow {
   position: fixed;
   right: calc((100vw - 980px) / 2 + 80px);
@@ -278,6 +324,61 @@
   letter-spacing: normal;
 }
 
+.theme-simple.misc-landing-arrow {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: normal;
+  color: #ffffff;
+  background: #635BFF;
+  border-radius: 0;
+  width: 40px;
+  height: 100px;
+  left: calc((100vw - 980px) / 2);
+  top: calc(47% - 150px);
+  padding-bottom: 6px;
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.theme-simple.misc-landing-arrow:hover {
+  color: #ffffff;
+  background: #4f47ff;
+  box-shadow: none;
+}
+
+.theme-simple.misc-landing-arrow .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+  margin-top: -12px;
+}
+
+.theme-simple.misc-landing-arrow:hover .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+}
+
+.theme-simple.misc-landing-arrow .arrow-label {
+  text-shadow: none;
+}
+
+.theme-simple.misc-landing-arrow:hover .arrow-label {
+  text-shadow: none;
+}
+
+@media (max-width: 799px) {
+  .theme-simple.misc-landing-arrow {
+    width: 40px;
+    height: 100px;
+    left: 0;
+    top: calc(47% - 100px);
+    padding-bottom: 6px;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .theme-simple.misc-landing-arrow .arrow-symbol {
+    margin-top: -12px;
+  }
+}
+
 .theme-simple.network-tools-arrow {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   letter-spacing: normal;
@@ -344,6 +445,61 @@
   background: rgba(22, 22, 31, 0.5);
 }
 
+.theme-dark.misc-landing-arrow {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: normal;
+  color: #000000;
+  background: #a78bfa;
+  border-radius: 0;
+  width: 40px;
+  height: 100px;
+  left: calc((100vw - 980px) / 2);
+  top: calc(47% - 150px);
+  padding-bottom: 6px;
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.theme-dark.misc-landing-arrow:hover {
+  color: #000000;
+  background: rgba(167, 139, 250, 0.85);
+  box-shadow: none;
+}
+
+.theme-dark.misc-landing-arrow .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+  margin-top: -12px;
+}
+
+.theme-dark.misc-landing-arrow:hover .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+}
+
+.theme-dark.misc-landing-arrow .arrow-label {
+  text-shadow: none;
+}
+
+.theme-dark.misc-landing-arrow:hover .arrow-label {
+  text-shadow: none;
+}
+
+@media (max-width: 799px) {
+  .theme-dark.misc-landing-arrow {
+    width: 40px;
+    height: 100px;
+    left: 0;
+    top: calc(47% - 100px);
+    padding-bottom: 6px;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .theme-dark.misc-landing-arrow .arrow-symbol {
+    margin-top: -12px;
+  }
+}
+
 .theme-dark.network-tools-arrow {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   letter-spacing: normal;
@@ -402,6 +558,45 @@
 /* ============================================================
    INLINE NAV BUTTONS (simple + dark themes)
    ============================================================ */
+
+.landing-nav-btn-misc {
+  position: absolute;
+  left: -14px;
+  right: auto;
+  top: calc(50% - 1px);
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  background: var(--t-card-bg);
+  border: none;
+  border-radius: 0;
+  color: var(--t-text-body);
+  box-shadow: var(--t-card-shadow, 0 2px 12px rgba(0, 0, 0, 0.35));
+  cursor: pointer;
+  font-family: var(--t-font-family);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: var(--t-letter-spacing);
+  white-space: nowrap;
+  transition: box-shadow 0.15s ease;
+}
+
+.theme-simple .landing-nav-btn-misc:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.24);
+}
+
+.theme-dark .landing-nav-btn-misc:hover {
+  box-shadow: 0 6px 24px rgba(167, 139, 250, 0.25);
+}
+
+@media (max-width: 799px) {
+  .landing-nav-btn-misc {
+    top: calc(50% + 32px);
+    left: 24px;
+  }
+}
 
 .landing-nav-btn {
   position: absolute;
