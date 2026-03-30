@@ -17,16 +17,20 @@
 /* Back / maximize / settings buttons */
 .theme-dark .device-back-button,
 .theme-dark .device-maximize-button,
-.theme-dark .device-settings-button {
+.theme-dark .device-settings-button,
+.theme-dark .sub-page-back-btn {
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.2);
   color: var(--t-text-body);
+  text-shadow: none;
 }
 
 .theme-dark .device-back-button:hover,
 .theme-dark .device-maximize-button:hover,
-.theme-dark .device-settings-button:hover {
+.theme-dark .device-settings-button:hover,
+.theme-dark .sub-page-back-btn:hover {
   background: rgba(255, 255, 255, 0.15);
+  box-shadow: none;
 }
 
 .theme-dark .device-settings-button.active {
@@ -477,6 +481,46 @@
 }
 
 .theme-dark .test-instructions {
+  background: #1e1e2e;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Misc page ---- */
+
+.theme-dark .misc-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #581c87 0%, #4338ca 50%, #1e40af 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-dark .misc-card {
+  background: #1e1e2e;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.theme-dark .misc-card:hover {
+  box-shadow: 0 6px 24px rgba(167, 139, 250, 0.25);
+}
+
+/* ---- ECE Click Timing page ---- */
+
+.theme-dark .ece-timing-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #581c87 0%, #4338ca 50%, #1e40af 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-dark .ece-section {
   background: #1e1e2e;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }

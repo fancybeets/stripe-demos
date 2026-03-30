@@ -14,6 +14,8 @@ import ConnectEmbeddedIntegration from './components/integrations/connect-embedd
 import HostedCheckoutIntegration from './components/integrations/hosted-checkout/HostedCheckout';
 import NetworkTools from './components/integrations/NetworkTools';
 import StripeReachability from './components/tools/StripeReachability';
+import Misc from './components/misc/Misc';
+import EceClickTiming from './components/misc/EceClickTiming';
 import About from './components/About';
 import Settings from './components/Settings';
 import { ApiLoggerProvider } from './context/ApiLoggerContext';
@@ -94,6 +96,16 @@ function App() {
       setCurrentView({
         type: 'stripe-connectivity',
         content: <StripeReachability />,
+      });
+    } else if (pathname === '/misc') {
+      setCurrentView({
+        type: 'misc',
+        content: <Misc />,
+      });
+    } else if (pathname === '/misc/ece-timing') {
+      setCurrentView({
+        type: 'ece-timing',
+        content: <EceClickTiming />,
       });
     } else if (pathname === '/about') {
       setCurrentView({

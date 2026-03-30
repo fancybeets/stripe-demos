@@ -2,17 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useDeviceContext } from '../../context/DeviceContext';
-import './NetworkTools.css';
+import './Misc.css';
 
-const networkTools = [
+const miscItems = [
   {
-    id: 'stripe-connectivity',
-    title: 'Terminal Reachability',
-    description: 'Test connectivity to required Terminal domains',
+    id: 'ece-timing',
+    title: 'ECE Click-To-Resolve Timing',
+    description: 'See what happens when your Express Checkout Element \'click\' listener resolves under vs. over 1 second',
   },
 ];
 
-const NetworkTools = ({ onNavigate }) => {
+const Misc = ({ onNavigate }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const { screenTiltStyle, screenFalling, theme } = useDeviceContext();
@@ -20,7 +20,21 @@ const NetworkTools = ({ onNavigate }) => {
     ? `translateY(-50%) ${screenTiltStyle.transform}`
     : 'translateY(-50%)';
 
-  const handleBackClick = () => {
+  const handleToolsClick = () => {
+    if (onNavigate) {
+      onNavigate();
+    }
+    const currentParams = new URLSearchParams(location.search);
+    const logsParam = currentParams.get('logs');
+    const params = new URLSearchParams();
+    if (logsParam) {
+      params.set('logs', logsParam);
+    }
+    const queryString = params.toString();
+    navigate(`/tools${queryString ? `?${queryString}` : ''}`);
+  };
+
+  const handleDemosClick = () => {
     if (onNavigate) {
       onNavigate();
     }
@@ -34,7 +48,7 @@ const NetworkTools = ({ onNavigate }) => {
     navigate(`/${queryString ? `?${queryString}` : ''}`);
   };
 
-  const handleMiscClick = () => {
+  const handleItemClick = (itemId) => {
     if (onNavigate) {
       onNavigate();
     }
@@ -45,65 +59,51 @@ const NetworkTools = ({ onNavigate }) => {
       params.set('logs', logsParam);
     }
     const queryString = params.toString();
-    navigate(`/misc${queryString ? `?${queryString}` : ''}`);
-  };
-
-  const handleToolClick = (toolId) => {
-    if (onNavigate) {
-      onNavigate();
-    }
-    const currentParams = new URLSearchParams(location.search);
-    const logsParam = currentParams.get('logs');
-    const params = new URLSearchParams();
-    if (logsParam) {
-      params.set('logs', logsParam);
-    }
-    const queryString = params.toString();
-    navigate(`/tools/${toolId}${queryString ? `?${queryString}` : ''}`);
+    navigate(`/misc/${itemId}${queryString ? `?${queryString}` : ''}`);
   };
 
   return (
-    <div className="network-tools-content">
-      <div className="network-tools-header">
-        <div className="network-tools-title">Testing Tools</div>
+    <div className="misc-content">
+      <div className="misc-header">
+        <div className="misc-title">Miscellaneous</div>
       </div>
 
-      <div className="tools-grid-area">
-        <div className="tools-subtitle-row">
+      <div className="misc-grid-area">
+        <div className="misc-subtitle-row">
           {theme !== 'apocalypse' && (
             <button
-              className="tools-nav-btn"
-              onClick={handleBackClick}
-              title="Back to Demos"
+              className="misc-nav-btn"
+              onClick={handleToolsClick}
+              title="Testing Tools"
             >
-              <span className="tools-nav-arrow">←</span>
-              <span className="tools-nav-label">DEMOS</span>
+              <span className="misc-nav-arrow">←</span>
+              <span className="misc-nav-label">TOOLS</span>
             </button>
           )}
-          <div className="network-tools-subtitle">
-            EXPERIMENTAL - use and trust with caution
+          <div className="misc-subtitle">
+            Odds and ends
           </div>
           {theme !== 'apocalypse' && (
             <button
-              className="tools-nav-btn tools-nav-btn-right"
-              onClick={handleMiscClick}
-              title="Misc"
+              className="misc-nav-btn misc-nav-btn-right"
+              onClick={handleDemosClick}
+              title="Back to Demos"
             >
-              <span className="tools-nav-label">MISC</span>
-              <span className="tools-nav-arrow">→</span>
+              <span className="misc-nav-label">DEMOS</span>
+              <span className="misc-nav-arrow">→</span>
             </button>
           )}
         </div>
 
-        <div className="tools-grid">
-          {networkTools.map((tool) => (
+        <div className="misc-grid">
+          {miscItems.map((item) => (
             <div
-              key={tool.id}
-              className="tool-card"
-              onClick={() => handleToolClick(tool.id)}
+              key={item.id}
+              className="misc-card"
+              onClick={() => handleItemClick(item.id)}
             >
-              <div className="tool-card-title">{tool.title}</div>
-              <div className="tool-card-description">{tool.description}</div>
+              <div className="misc-card-title">{item.title}</div>
+              <div className="misc-card-description">{item.description}</div>
             </div>
           ))}
         </div>
@@ -111,26 +111,26 @@ const NetworkTools = ({ onNavigate }) => {
 
       {theme === 'apocalypse' && ReactDOM.createPortal(
         <button
-          className={`theme-${theme} demos-arrow${screenFalling ? ' screen-falling' : ''}`}
+          className={`theme-${theme} misc-tools-arrow${screenFalling ? ' screen-falling' : ''}`}
           style={{ transform: tiltTransform }}
-          onClick={handleBackClick}
-          title="Back to Demos"
+          onClick={handleToolsClick}
+          title="Testing Tools"
         >
           <div className="arrow-symbol">←</div>
-          <div className="arrow-label">DEMOS</div>
+          <div className="arrow-label">TOOLS</div>
         </button>,
         document.body
       )}
 
       {theme === 'apocalypse' && ReactDOM.createPortal(
         <button
-          className={`theme-${theme} tools-misc-arrow${screenFalling ? ' screen-falling' : ''}`}
+          className={`theme-${theme} misc-demos-arrow${screenFalling ? ' screen-falling' : ''}`}
           style={{ transform: tiltTransform }}
-          onClick={handleMiscClick}
-          title="Misc"
+          onClick={handleDemosClick}
+          title="Back to Demos"
         >
           <div className="arrow-symbol">→</div>
-          <div className="arrow-label">MISC</div>
+          <div className="arrow-label">DEMOS</div>
         </button>,
         document.body
       )}
@@ -138,4 +138,4 @@ const NetworkTools = ({ onNavigate }) => {
   );
 };
 
-export default NetworkTools;
+export default Misc;

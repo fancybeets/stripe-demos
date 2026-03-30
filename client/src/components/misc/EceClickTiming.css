@@ -1,0 +1,262 @@
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(255, 176, 0, 0.6)); }
+  50% { filter: drop-shadow(0 0 15px rgba(255, 176, 0, 1)); }
+}
+
+.ece-timing-content {
+  padding: 40px 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.ece-timing-header {
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.ece-timing-title {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  text-shadow: var(--t-text-shadow, 0 0 15px #ffb000);
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.ece-timing-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+}
+
+@media (max-width: 799px) {
+  .ece-timing-body {
+    padding: 0 20px;
+  }
+}
+
+
+.ece-timing-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--t-primary, #ffb000);
+  opacity: 0.8;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  margin-bottom: 40px;
+  padding-top: 40px;
+  word-wrap: break-word;
+}
+
+
+.ece-section {
+  border: 2px solid var(--t-primary, #ffb000);
+  padding: 28px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 0 20px rgba(var(--t-primary-rgb, 255, 176, 0), 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.ece-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--t-primary-rgb, 255, 176, 0), 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(var(--t-primary-rgb, 255, 176, 0), 0.03) 3px
+    );
+  pointer-events: none;
+  display: var(--t-scanline-display, block);
+}
+
+.ece-section-header {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  text-shadow: var(--t-text-shadow, 0 0 8px #ffb000);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.ece-demo-row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+
+.ece-element-area {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 48px;
+}
+
+.ece-timer-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+.ece-countdown-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.ece-countdown-circle {
+  width: 80px;
+  height: 80px;
+}
+
+.ece-countdown-circle-bg {
+  fill: none;
+  stroke: rgba(var(--t-primary-rgb, 255, 176, 0), 0.2);
+  stroke-width: 8;
+}
+
+.ece-countdown-circle-progress {
+  fill: none;
+  stroke: var(--t-primary, #ffb000);
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+.ece-countdown-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.ece-countdown-text.result-ok {
+  font-size: 22px;
+  color: #00ff88;
+  animation: resultFadeIn 0.15s ease;
+}
+
+.ece-countdown-text.result-fail {
+  font-size: 22px;
+  color: #ff4444;
+  animation: resultFadeIn 0.15s ease;
+}
+
+@keyframes resultFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ece-code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(var(--t-primary-rgb, 255, 176, 0), 0.3);
+  padding: 16px 20px;
+  margin: 0;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--t-primary, #ffb000);
+  opacity: 0.85;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.ece-timing-link {
+  color: var(--t-primary, #ffb000);
+  text-decoration: underline;
+  opacity: 1;
+  font-family: 'Courier New', monospace;
+  font-size: inherit;
+}
+
+.ece-timing-link:hover {
+  color: var(--t-primary-hover, #ffd700);
+}
+
+.ece-error {
+  font-family: 'Courier New', monospace;
+  color: #ff4444;
+  font-size: 13px;
+  padding: 20px 0;
+}
+
+/* ============================================================
+   THEME OVERRIDES
+   ============================================================ */
+
+/* Simple/dark overrides are in theme-shared-clean.css */
+
+@media (max-width: 799px) {
+  .ece-timing-title {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .ece-timing-subtitle {
+    font-size: 11px;
+  }
+
+  .ece-section-header {
+    font-size: 13px;
+  }
+
+  .ece-countdown-text {
+    font-size: 13px;
+  }
+
+  .ece-countdown-text.result-ok,
+  .ece-countdown-text.result-fail {
+    font-size: 18px;
+  }
+
+  .ece-code-block {
+    font-size: 10px;
+  }
+
+  .ece-demo-row {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .ece-timer-area {
+    margin-top: 0;
+  }
+
+  .ece-section {
+    padding: 20px 16px;
+  }
+}

@@ -17,16 +17,20 @@
 /* Back / maximize / settings buttons */
 .theme-simple .device-back-button,
 .theme-simple .device-maximize-button,
-.theme-simple .device-settings-button {
+.theme-simple .device-settings-button,
+.theme-simple .sub-page-back-btn {
   background: rgba(255, 255, 255, 0.15);
   border-color: rgba(255, 255, 255, 0.4);
   color: #ffffff;
+  text-shadow: none;
 }
 
 .theme-simple .device-back-button:hover,
 .theme-simple .device-maximize-button:hover,
-.theme-simple .device-settings-button:hover {
+.theme-simple .device-settings-button:hover,
+.theme-simple .sub-page-back-btn:hover {
   background: rgba(255, 255, 255, 0.25);
+  box-shadow: none;
 }
 
 .theme-simple .device-settings-button.active {
@@ -471,6 +475,46 @@
 }
 
 .theme-simple .test-instructions {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* ---- Misc page ---- */
+
+.theme-simple .misc-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-simple .misc-card {
+  background: #ffffff;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-simple .misc-card:hover {
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.24);
+}
+
+/* ---- ECE Click Timing page ---- */
+
+.theme-simple .ece-timing-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #9333ea 0%, #635BFF 50%, #3b82f6 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-simple .ece-section {
   background: #ffffff;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
 }

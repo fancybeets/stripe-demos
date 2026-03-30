@@ -27,6 +27,12 @@
     top: calc(50% + 32px);
     left: 24px;
   }
+
+  .theme-simple .tools-nav-btn-right,
+  .theme-dark .tools-nav-btn-right {
+    left: auto;
+    right: 24px;
+  }
 }
 
 .network-tools-header {
@@ -99,6 +105,20 @@
 @media (max-width: 799px) {
   .tools-nav-btn {
     top: calc(50% + 25px);
+  }
+}
+
+/* Right-side inline nav button (simple + dark themes) */
+.tools-nav-btn-right {
+  left: auto;
+  right: -14px;
+}
+
+@media (max-width: 799px) {
+  .tools-nav-btn-right {
+    left: auto;
+    right: 24px;
+    top: calc(50% + 32px);
   }
 }
 
@@ -324,6 +344,116 @@
   background: rgba(22, 22, 31, 0.5);
 }
 
+.theme-simple.tools-misc-arrow {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: normal;
+  color: #ffffff;
+  background: #635BFF;
+  border-radius: 0;
+  width: 40px;
+  height: 100px;
+  right: calc((100vw - 980px) / 2);
+  top: calc(47% - 150px);
+  padding-bottom: 6px;
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.theme-simple.tools-misc-arrow:hover {
+  color: #ffffff;
+  background: #4f47ff;
+  box-shadow: none;
+}
+
+.theme-simple.tools-misc-arrow .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+  margin-top: -12px;
+}
+
+.theme-simple.tools-misc-arrow:hover .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+}
+
+.theme-simple.tools-misc-arrow .arrow-label {
+  text-shadow: none;
+}
+
+.theme-simple.tools-misc-arrow:hover .arrow-label {
+  text-shadow: none;
+}
+
+@media (max-width: 799px) {
+  .theme-simple.tools-misc-arrow {
+    width: 40px;
+    height: 100px;
+    right: 0;
+    top: calc(47% - 100px);
+    padding-bottom: 6px;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .theme-simple.tools-misc-arrow .arrow-symbol {
+    margin-top: -12px;
+  }
+}
+
+.theme-dark.tools-misc-arrow {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  letter-spacing: normal;
+  color: #000000;
+  background: #a78bfa;
+  border-radius: 0;
+  width: 40px;
+  height: 100px;
+  right: calc((100vw - 980px) / 2);
+  top: calc(47% - 150px);
+  padding-bottom: 6px;
+  flex-direction: column-reverse;
+  gap: 0;
+}
+
+.theme-dark.tools-misc-arrow:hover {
+  color: #000000;
+  background: #c4b5fd;
+  box-shadow: none;
+}
+
+.theme-dark.tools-misc-arrow .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+  margin-top: -12px;
+}
+
+.theme-dark.tools-misc-arrow:hover .arrow-symbol {
+  text-shadow: none;
+  filter: none;
+}
+
+.theme-dark.tools-misc-arrow .arrow-label {
+  text-shadow: none;
+}
+
+.theme-dark.tools-misc-arrow:hover .arrow-label {
+  text-shadow: none;
+}
+
+@media (max-width: 799px) {
+  .theme-dark.tools-misc-arrow {
+    width: 40px;
+    height: 100px;
+    right: 0;
+    top: calc(47% - 100px);
+    padding-bottom: 6px;
+    flex-direction: column-reverse;
+    gap: 0;
+  }
+  .theme-dark.tools-misc-arrow .arrow-symbol {
+    margin-top: -12px;
+  }
+}
+
 .theme-dark.demos-arrow {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   letter-spacing: normal;
@@ -447,6 +577,78 @@
   }
 
   .demos-arrow .arrow-label {
+    font-size: 9px;
+    letter-spacing: 0.3px;
+  }
+}
+
+/* Right-side portal arrow: MISC → */
+.tools-misc-arrow {
+  position: fixed;
+  right: calc((100vw - 980px) / 2 + 80px);
+  top: 47%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: var(--t-primary, #ffb000);
+  cursor: pointer;
+  font-family: 'Courier New', monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6px 8px;
+  gap: 1px;
+  z-index: 150;
+  opacity: 1;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.12s ease-out;
+}
+
+.tools-misc-arrow.screen-falling {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tools-misc-arrow .arrow-symbol {
+  font-size: 32px;
+  font-weight: 900;
+  line-height: 1;
+  text-shadow: var(--t-text-shadow, 0 0 8px #ffb000);
+  filter: drop-shadow(0 0 8px rgba(var(--t-primary-rgb, 255, 176, 0), 0.6));
+}
+
+.tools-misc-arrow .arrow-label {
+  font-size: 9px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  opacity: 1;
+  text-shadow: var(--t-text-shadow, 0 0 5px rgba(255, 176, 0, 0.5));
+}
+
+.tools-misc-arrow:hover {
+  color: var(--t-primary-hover, #ffd700);
+}
+
+.tools-misc-arrow:hover .arrow-symbol {
+  text-shadow: var(--t-text-shadow, 0 0 10px #ffd700);
+}
+
+.tools-misc-arrow:hover .arrow-label {
+  text-shadow: var(--t-text-shadow, 0 0 5px rgba(255, 215, 0, 0.8));
+}
+
+@media (max-width: 799px) {
+  .tools-misc-arrow {
+    padding: 4px 6px;
+    right: 0;
+    gap: 1px;
+  }
+
+  .tools-misc-arrow .arrow-symbol {
+    font-size: 28px;
+  }
+
+  .tools-misc-arrow .arrow-label {
     font-size: 9px;
     letter-spacing: 0.3px;
   }
