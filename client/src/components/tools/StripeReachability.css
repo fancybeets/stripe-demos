@@ -93,6 +93,10 @@
     padding: 0 20px;
   }
 
+  .description-cell {
+    display: none;
+  }
+
   .reachability-subtitle-row {
     margin-bottom: 0;
   }

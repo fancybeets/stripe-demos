@@ -206,7 +206,7 @@ const StripeReachability = ({ onNavigate }) => {
                 <tr>
                   <th>Status</th>
                   <th>Domain</th>
-                  <th>Description</th>
+                  <th className="description-cell">Description</th>
                   <th>Latency</th>
                 </tr>
               </thead>
