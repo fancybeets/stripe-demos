@@ -240,10 +240,10 @@ const DeviceLayout = ({ children }) => {
     if (urlMode && ['default', 'deferred'].includes(urlMode)) {
       setMode(urlMode);
     }
-    if (urlCountry && ['US', 'GB', 'MX', 'CA'].includes(urlCountry)) {
+    if (urlCountry && ['US', 'GB', 'MX', 'CA', 'SG', 'JP'].includes(urlCountry)) {
       setCountry(urlCountry);
     }
-    if (urlCurrency && ['usd', 'eur', 'gbp', 'jpy', 'mxn', 'cad'].includes(urlCurrency)) {
+    if (urlCurrency && ['usd', 'eur', 'gbp', 'jpy', 'mxn', 'cad', 'sgd'].includes(urlCurrency)) {
       setCurrency(urlCurrency);
     }
     if (urlAmount) {
@@ -549,6 +549,8 @@ const DeviceLayout = ({ children }) => {
     { id: 'GB', name: 'United Kingdom' },
     { id: 'MX', name: 'Mexico' },
     { id: 'CA', name: 'Canada' },
+    { id: 'SG', name: 'Singapore' },
+    { id: 'JP', name: 'Japan' },
   ];
 
   const availableCurrencies = [
@@ -558,6 +560,7 @@ const DeviceLayout = ({ children }) => {
     { id: 'jpy', name: 'JPY' },
     { id: 'mxn', name: 'MXN' },
     { id: 'cad', name: 'CAD' },
+    { id: 'sgd', name: 'SGD' },
   ];
 
   const availableConnectComponents = [
