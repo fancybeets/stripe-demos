@@ -525,6 +525,24 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* ---- FC OAuth Disconnect page ---- */
+
+.theme-dark .fc-oauth-title {
+  color: #ffffff;
+  text-transform: none;
+  background: linear-gradient(135deg, #581c87 0%, #4338ca 50%, #1e40af 100%);
+  letter-spacing: normal;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  padding: 20px;
+  display: block;
+  margin-bottom: 0;
+}
+
+.theme-dark .fc-oauth-section {
+  background: #1e1e2e;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
 /* ---- Logs drawer ---- */
 
 .theme-dark .api-logger-drawer {

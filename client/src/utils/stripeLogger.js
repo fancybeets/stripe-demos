@@ -138,6 +138,30 @@ export const confirmSetup = async (stripe, ...args) => {
   }
 };
 
+// Wrapper for stripe.collectFinancialConnectionsAccounts()
+export const collectFinancialConnectionsAccounts = async (stripe, ...args) => {
+  const startTime = Date.now();
+
+  try {
+    const result = await stripe.collectFinancialConnectionsAccounts(...args);
+    const duration = Date.now() - startTime;
+
+    if (apiLoggerContext) {
+      apiLoggerContext(createLogEntry('collectFinancialConnectionsAccounts', args, result, duration));
+    }
+
+    return result;
+  } catch (error) {
+    const duration = Date.now() - startTime;
+
+    if (apiLoggerContext) {
+      apiLoggerContext(createLogEntry('collectFinancialConnectionsAccounts', args, null, duration, error));
+    }
+
+    throw error;
+  }
+};
+
 // Wrapper for elements.submit()
 export const elementsSubmit = async (elements) => {
   const startTime = Date.now();

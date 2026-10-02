@@ -36,6 +36,7 @@ const terminalRoutes = require('./routes/terminal');
 const terminalJsSdkRoutes = require('./routes/terminal-js-sdk');
 const connectEmbeddedRoutes = require('./routes/connect-embedded');
 const hostedCheckoutRoutes = require('./routes/hosted-checkout');
+const financialConnectionsRoutes = require('./routes/financial-connections');
 
 app.use('/card-element', cardElementRoutes);
 app.use('/payment-element', paymentElementRoutes);
@@ -47,6 +48,7 @@ app.use('/terminal', terminalRoutes);
 app.use('/terminal-js-sdk', terminalJsSdkRoutes);
 app.use('/connect-embedded', connectEmbeddedRoutes);
 app.use('/hosted-checkout', hostedCheckoutRoutes);
+app.use('/financial-connections', financialConnectionsRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);

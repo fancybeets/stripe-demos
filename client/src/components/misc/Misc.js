@@ -10,6 +10,11 @@ const miscItems = [
     title: 'ECE Click-To-Resolve Timing',
     description: 'See what happens when your Express Checkout Element \'click\' listener resolves under vs. over 1 second',
   },
+  {
+    id: 'fc-oauth-disconnect',
+    title: 'FC OAuth Pop-up Rapid Disconnect',
+    description: 'Trigger the console warning Stripe.js logs when the Financial Connections OAuth pop-up disconnects within 3 seconds',
+  },
 ];
 
 const Misc = ({ onNavigate }) => {

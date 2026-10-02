@@ -1,0 +1,201 @@
+.fc-oauth-content {
+  padding: 40px 20px;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+.fc-oauth-header {
+  text-align: center;
+  margin-bottom: 0;
+  position: relative;
+}
+
+.fc-oauth-title {
+  font-family: 'Courier New', monospace;
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  text-shadow: var(--t-text-shadow, 0 0 15px #ffb000);
+  letter-spacing: 3px;
+  margin-bottom: 15px;
+  word-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.fc-oauth-body {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 80px;
+  position: relative;
+}
+
+@media (max-width: 799px) {
+  .fc-oauth-body {
+    padding: 0 20px;
+  }
+}
+
+.fc-oauth-subtitle {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--t-primary, #ffb000);
+  opacity: 0.8;
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  margin-bottom: 24px;
+  padding-top: 40px;
+  word-wrap: break-word;
+}
+
+.fc-oauth-section {
+  border: 2px solid var(--t-primary, #ffb000);
+  padding: 28px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 0 20px rgba(var(--t-primary-rgb, 255, 176, 0), 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.fc-oauth-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(var(--t-primary-rgb, 255, 176, 0), 0.03) 0px,
+      transparent 1px,
+      transparent 2px,
+      rgba(var(--t-primary-rgb, 255, 176, 0), 0.03) 3px
+    );
+  pointer-events: none;
+  display: var(--t-scanline-display, block);
+}
+
+.fc-oauth-section-header {
+  font-family: 'Courier New', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  text-shadow: var(--t-text-shadow, 0 0 8px #ffb000);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.fc-oauth-section-text {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--t-primary, #ffb000);
+  opacity: 0.85;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.fc-oauth-code-block {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(var(--t-primary-rgb, 255, 176, 0), 0.3);
+  padding: 16px 20px;
+  margin: 0 0 20px 0;
+  overflow-x: auto;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: var(--t-primary, #ffb000);
+  opacity: 0.85;
+  line-height: 1.6;
+  white-space: pre;
+}
+
+.fc-oauth-warning {
+  white-space: pre-wrap;
+  margin-bottom: 32px;
+}
+
+.fc-oauth-button {
+  position: relative;
+  font-family: 'Courier New', monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--t-primary, #ffb000);
+  background: transparent;
+  border: 3px solid var(--t-primary, #ffb000);
+  padding: 12px 30px;
+  cursor: pointer;
+  box-shadow: var(--t-glow-shadow, 0 0 20px rgba(255, 176, 0, 0.3));
+  transition: all 0.3s ease;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.fc-oauth-button:hover:not(:disabled) {
+  border-color: var(--t-primary-hover, #ffd700);
+  color: var(--t-primary-hover, #ffd700);
+  box-shadow: 0 0 30px rgba(var(--t-primary-rgb, 255, 176, 0), 0.6);
+  background: rgba(var(--t-primary-rgb, 255, 176, 0), 0.1);
+}
+
+.fc-oauth-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.fc-oauth-result {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  margin-top: 16px;
+}
+
+.fc-oauth-result.result-ok {
+  color: #00ff88;
+}
+
+.fc-oauth-result.result-fail {
+  color: #ff4444;
+}
+
+.fc-oauth-link {
+  color: var(--t-primary, #ffb000);
+  text-decoration: underline;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.fc-oauth-link:hover {
+  color: var(--t-primary-hover, #ffd700);
+}
+
+/* ============================================================
+   THEME OVERRIDES
+   ============================================================ */
+
+/* Simple/dark overrides are in theme-shared-clean.css */
+
+@media (max-width: 799px) {
+  .fc-oauth-title {
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
+
+  .fc-oauth-subtitle,
+  .fc-oauth-section-text {
+    font-size: 11px;
+  }
+
+  .fc-oauth-section-header {
+    font-size: 13px;
+  }
+
+  .fc-oauth-code-block {
+    font-size: 10px;
+  }
+
+  .fc-oauth-section {
+    padding: 20px 16px;
+  }
+}
