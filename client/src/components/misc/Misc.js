@@ -11,7 +11,7 @@ const miscItems = [
   },
   {
     id: 'fc-oauth-disconnect',
-    title: 'Financial Connections OAuth Pop-up Rapid Disconnect',
+    title: 'Financial Connections OAuth Pop-up Disconnection',
   },
 ];
 

@@ -113,7 +113,7 @@ const FcOAuthDisconnect = ({ onNavigate }) => {
         {theme !== 'apocalypse' && (
           <button className="sub-page-back-btn" onClick={handleBackClick} title="Back to Misc">←</button>
         )}
-        <div className="fc-oauth-title">Financial Connections OAuth Pop-up Rapid Disconnect</div>
+        <div className="fc-oauth-title">Financial Connections OAuth Pop-up Disconnection</div>
       </div>
 
       <div className="fc-oauth-body">
