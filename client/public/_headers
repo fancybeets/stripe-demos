@@ -1,0 +1,3 @@
+# Deliberately broken COOP header for the FC OAuth rapid-disconnect demo
+/misc/fc-oauth-disconnect/coop
+  Cross-Origin-Opener-Policy: same-origin

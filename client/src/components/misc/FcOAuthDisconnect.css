@@ -41,13 +41,19 @@
 .fc-oauth-subtitle {
   font-family: 'Courier New', monospace;
   font-size: 13px;
-  color: var(--t-primary, #ffb000);
-  opacity: 0.8;
+  color: var(--t-primary-hover, #ffc933);
+  -webkit-text-stroke: 0.3px currentColor;
   line-height: 1.7;
   letter-spacing: 0.5px;
   margin-bottom: 24px;
   padding-top: 40px;
   word-wrap: break-word;
+}
+
+.fc-oauth-subtitle.fc-oauth-followup {
+  padding-top: 0;
+  margin-bottom: 32px;
+  word-break: break-word;
 }
 
 .fc-oauth-section {
@@ -92,9 +98,27 @@
 .fc-oauth-section-text {
   font-family: 'Courier New', monospace;
   font-size: 13px;
-  color: var(--t-primary, #ffb000);
-  opacity: 0.85;
+  color: var(--t-primary-hover, #ffc933);
+  -webkit-text-stroke: 0.3px currentColor;
   line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.fc-oauth-body > .fc-oauth-section:first-child {
+  margin-top: 40px;
+}
+
+.fc-oauth-steps {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: var(--t-primary-hover, #ffc933);
+  -webkit-text-stroke: 0.3px currentColor;
+  line-height: 1.7;
+  margin: 0 0 16px 0;
+  padding-left: 24px;
+}
+
+.fc-oauth-section .fc-oauth-warning {
   margin-bottom: 20px;
 }
 
@@ -114,6 +138,9 @@
 
 .fc-oauth-warning {
   white-space: pre-wrap;
+  color: var(--t-primary-hover, #ffc933);
+  -webkit-text-stroke: 0.3px currentColor;
+  opacity: 1;
   margin-bottom: 32px;
 }
 
@@ -151,10 +178,6 @@
   margin-top: 16px;
 }
 
-.fc-oauth-result.result-ok {
-  color: #00ff88;
-}
-
 .fc-oauth-result.result-fail {
   color: #ff4444;
 }
@@ -183,7 +206,8 @@
   }
 
   .fc-oauth-subtitle,
-  .fc-oauth-section-text {
+  .fc-oauth-section-text,
+  .fc-oauth-steps {
     font-size: 11px;
   }
 

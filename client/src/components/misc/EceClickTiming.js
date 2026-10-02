@@ -176,7 +176,7 @@ const EceClickTiming = ({ onNavigate }) => {
         {theme !== 'apocalypse' && (
           <button className="sub-page-back-btn" onClick={handleBackClick} title="Back to Misc">←</button>
         )}
-        <div className="ece-timing-title">ECE Click-To-Resolve Timing</div>
+        <div className="ece-timing-title">Express Checkout Element Click-To-Resolve Timing</div>
       </div>
 
       <div className="ece-timing-body">

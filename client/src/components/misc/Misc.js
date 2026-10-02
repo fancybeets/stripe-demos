@@ -7,13 +7,11 @@ import './Misc.css';
 const miscItems = [
   {
     id: 'ece-timing',
-    title: 'ECE Click-To-Resolve Timing',
-    description: 'See what happens when your Express Checkout Element \'click\' listener resolves under vs. over 1 second',
+    title: 'Express Checkout Element Click-To-Resolve Timing',
   },
   {
     id: 'fc-oauth-disconnect',
-    title: 'FC OAuth Pop-up Rapid Disconnect',
-    description: 'Trigger the console warning Stripe.js logs when the Financial Connections OAuth pop-up disconnects within 3 seconds',
+    title: 'Financial Connections OAuth Pop-up Rapid Disconnect',
   },
 ];
 
@@ -108,7 +106,7 @@ const Misc = ({ onNavigate }) => {
               onClick={() => handleItemClick(item.id)}
             >
               <div className="misc-card-title">{item.title}</div>
-              <div className="misc-card-description">{item.description}</div>
+              {item.description && <div className="misc-card-description">{item.description}</div>}
             </div>
           ))}
         </div>

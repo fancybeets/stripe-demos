@@ -995,6 +995,7 @@
 
 .theme-simple .ece-timing-subtitle,
 .theme-dark .ece-timing-subtitle {
+  -webkit-text-stroke: 0;
   color: var(--t-text-secondary);
   letter-spacing: var(--t-letter-spacing);
   font-family: var(--t-font-family);
@@ -1085,11 +1086,17 @@
 
 .theme-simple .fc-oauth-subtitle,
 .theme-dark .fc-oauth-subtitle {
+  -webkit-text-stroke: 0;
   color: var(--t-text-secondary);
   letter-spacing: var(--t-letter-spacing);
   font-family: var(--t-font-family);
   opacity: 1;
   padding: 24px 30px;
+}
+
+.theme-simple .fc-oauth-subtitle.fc-oauth-followup,
+.theme-dark .fc-oauth-subtitle.fc-oauth-followup {
+  padding-top: 0;
 }
 
 .theme-simple .fc-oauth-section::before,
@@ -1123,9 +1130,22 @@
 
 .theme-simple .fc-oauth-section-text,
 .theme-dark .fc-oauth-section-text {
+  -webkit-text-stroke: 0;
   color: var(--t-text-secondary);
   font-family: var(--t-font-family);
   opacity: 1;
+}
+
+.theme-simple .fc-oauth-steps,
+.theme-dark .fc-oauth-steps {
+  color: var(--t-text-secondary);
+  font-family: var(--t-font-family);
+  -webkit-text-stroke: 0;
+}
+
+.theme-simple .fc-oauth-body > .fc-oauth-section:first-child,
+.theme-dark .fc-oauth-body > .fc-oauth-section:first-child {
+  margin-top: 24px;
 }
 
 .theme-simple .fc-oauth-code-block,
@@ -1134,6 +1154,12 @@
   border-color: var(--t-code-border);
   color: var(--t-text-body);
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
+.theme-simple .fc-oauth-warning,
+.theme-dark .fc-oauth-warning {
+  color: var(--t-text-body);
+  -webkit-text-stroke: 0;
 }
 
 .theme-simple .fc-oauth-button,
