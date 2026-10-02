@@ -286,6 +286,13 @@
   color: var(--t-primary);
 }
 
+.theme-simple .fc-oauth-section-text code {
+  background: rgba(99, 91, 255, 0.06);
+  border-color: rgba(99, 91, 255, 0.2);
+  color: var(--t-primary);
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
+
 .theme-simple .setup-link {
   color: var(--t-primary);
 }

@@ -113,11 +113,6 @@ function App() {
         type: 'fc-oauth-disconnect',
         content: <FcOAuthDisconnect />,
       });
-    } else if (pathname === '/misc/fc-oauth-disconnect/coop') {
-      setCurrentView({
-        type: 'fc-oauth-disconnect-coop',
-        content: <FcOAuthDisconnect coop />,
-      });
     } else if (pathname === '/about') {
       setCurrentView({
         type: 'about',
