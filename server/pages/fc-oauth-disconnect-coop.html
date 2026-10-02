@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FC OAuth Pop-up: Broken COOP</title>
+  <link rel="stylesheet" href="assets/page.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="assets/fc-oauth-disconnect-coop.js" defer></script>
+</head>
+<body>
+  <a id="back-link" class="back-link" href="#" hidden>← Back to the Financial Connections OAuth demo</a>
+
+  <h1>Financial Connections with a broken COOP header</h1>
+  <p>
+    This page is served with <code>Cross-Origin-Opener-Policy: same-origin</code>.
+    That header cuts this page off from the cross-origin bank OAuth pop-up, so
+    Stripe.js sees the pop-up as closed right after it opens.
+  </p>
+  <ol>
+    <li>Open DevTools and switch to the <strong>Console</strong> tab.</li>
+    <li>In the Payment Element below, choose an <strong>OAuth</strong> test institution and continue to the bank pop-up.</li>
+    <li>The pop-up disconnects right away, and this warning appears in the console:</li>
+  </ol>
+  <pre>⚠ The Financial Connections OAuth pop-up window disconnected very quickly after opening. This may indicate a CORS, COOP, webview, or iframe configuration issue. See https://docs.stripe.com/financial-connections/deployment-checklist for troubleshooting guidance.</pre>
+
+  <div id="payment-element" class="payment-element"></div>
+  <div id="result" class="result error" hidden></div>
+</body>
+</html>

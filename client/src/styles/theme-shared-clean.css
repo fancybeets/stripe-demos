@@ -1134,16 +1134,10 @@
   opacity: 1;
 }
 
-.theme-simple .fc-oauth-steps,
-.theme-dark .fc-oauth-steps {
+.theme-simple .fc-oauth-loading,
+.theme-dark .fc-oauth-loading {
   color: var(--t-text-secondary);
   font-family: var(--t-font-family);
-  -webkit-text-stroke: 0;
-}
-
-.theme-simple .fc-oauth-body > .fc-oauth-section:first-child,
-.theme-dark .fc-oauth-body > .fc-oauth-section:first-child {
-  margin-top: 24px;
 }
 
 .theme-simple .fc-oauth-code-block,
