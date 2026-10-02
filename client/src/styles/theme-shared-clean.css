@@ -1000,7 +1000,8 @@
   letter-spacing: var(--t-letter-spacing);
   font-family: var(--t-font-family);
   opacity: 1;
-  padding: 24px 30px;
+  padding: 24px 30px 0;
+  margin-bottom: 20px;
 }
 
 .theme-simple .ece-section::before,
@@ -1020,11 +1021,6 @@
   .theme-simple .ece-timing-body,
   .theme-dark .ece-timing-body {
     margin-top: 0;
-  }
-
-  .theme-simple .ece-timing-subtitle,
-  .theme-dark .ece-timing-subtitle {
-    margin-bottom: 0;
   }
 
   .theme-simple .ece-section,
@@ -1091,12 +1087,14 @@
   letter-spacing: var(--t-letter-spacing);
   font-family: var(--t-font-family);
   opacity: 1;
-  padding: 24px 30px;
+  padding: 24px 30px 0;
+  margin-bottom: 20px;
 }
 
 .theme-simple .fc-oauth-subtitle.fc-oauth-followup,
 .theme-dark .fc-oauth-subtitle.fc-oauth-followup {
   padding-top: 0;
+  margin-bottom: 24px;
 }
 
 .theme-simple .fc-oauth-section::before,
@@ -1160,6 +1158,7 @@
 .theme-dark .fc-oauth-warning {
   color: var(--t-text-body);
   -webkit-text-stroke: 0;
+  margin-bottom: 20px;
 }
 
 .theme-simple .fc-oauth-button,
