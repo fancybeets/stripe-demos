@@ -7,8 +7,11 @@ import './Misc.css';
 const miscItems = [
   {
     id: 'ece-timing',
-    title: 'ECE Click-To-Resolve Timing',
-    description: 'See what happens when your Express Checkout Element \'click\' listener resolves under vs. over 1 second',
+    title: 'Express Checkout Element Click-To-Resolve Timing',
+  },
+  {
+    id: 'fc-oauth-disconnect',
+    title: 'Financial Connections OAuth Pop-up Rapid Disconnect',
   },
 ];
 
@@ -103,7 +106,7 @@ const Misc = ({ onNavigate }) => {
               onClick={() => handleItemClick(item.id)}
             >
               <div className="misc-card-title">{item.title}</div>
-              <div className="misc-card-description">{item.description}</div>
+              {item.description && <div className="misc-card-description">{item.description}</div>}
             </div>
           ))}
         </div>

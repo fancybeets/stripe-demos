@@ -52,8 +52,8 @@
 .ece-timing-subtitle {
   font-family: 'Courier New', monospace;
   font-size: 13px;
-  color: var(--t-primary, #ffb000);
-  opacity: 0.8;
+  color: var(--t-primary-hover, #ffc933);
+  -webkit-text-stroke: 0.3px currentColor;
   line-height: 1.7;
   letter-spacing: 0.5px;
   margin-bottom: 40px;
